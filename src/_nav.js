@@ -57,6 +57,23 @@ const SampleSideNav = {
       ]
     },
     {
+      name : "Health Institutes",
+      icon : 'icon-list',
+      url: '/health-institutes',
+      children: [
+        {
+          name : "List",
+          icon : 'icon-list',
+          url : '/health-institutes/list',
+        },
+        {
+          name : "Add",
+          icon : 'icon-plus',
+          url : '/health-institutes/add',
+        },
+      ]
+    },
+    {
       name : "About",
       icon : 'icon-list',
       url : '/about',

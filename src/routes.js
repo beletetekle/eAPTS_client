@@ -41,6 +41,16 @@ const AddWoreda = Loadable({
   loading: Loading,
 });
 
+const HealthInstitutes = Loadable({
+  loader: () => import('./views/address/healthInstitutes/HealthInstitutes'),
+  loading: Loading,
+});
+
+const AddHealthInstitute = Loadable({
+  loader: () => import('./views/address/healthInstitutes/AddHealthInstitute'),
+  loading: Loading,
+});
+
 
 const About = Loadable({
   loader: () => import('./views/about/About'),
@@ -60,5 +70,8 @@ const routes = [
   { path: '/woredas', exact: true, name: 'Woredas', component: Woredas},
   { path: '/woredas/list', name: 'Woredas', component: Woredas},
   { path: '/woredas/add', name: 'Add Woreda', component: AddWoreda},
+  { path: '/health-institutes', exact: true, name: 'Health Institutes', component: HealthInstitutes},
+  { path: '/health-institutes/list', name: 'Health Institutes', component: HealthInstitutes},
+  { path: '/health-institutes/add', name: 'Add Health Institute', component: AddHealthInstitute},
 ]
 export default routes;
