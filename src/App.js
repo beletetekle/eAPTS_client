@@ -17,6 +17,7 @@ class App extends Component {
           <Route path="/login" name="Home" component={Login} />
           <Route path="/register" name="Home" component={Register} />
           <PrivateRoute path="/" name="Home" component={DefaultLayout} />
+
         </Switch>
       </HashRouter>
     );
