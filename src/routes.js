@@ -61,6 +61,15 @@ const AddHealthInstituteCategory = Loadable({
   loading: Loading,
 });
 
+const Departments = Loadable({
+  loader: () => import('./views/address/departments/Departments'),
+  loading: Loading,
+});
+
+const AddDepartment = Loadable({
+  loader: () => import('./views/address/departments/AddDepartment'),
+  loading: Loading,
+});
 
 const About = Loadable({
   loader: () => import('./views/about/About'),
@@ -92,5 +101,8 @@ const routes = [
   { path: '/health-institutes/categories/list', name: 'Health Institute Categories', component: HealthInstituteCategories},
   { path: '/health-institutes/categories/add', name: 'Add Health Institute Category', component: AddHealthInstituteCategory},
   { path: '/accounts', exact: true, name: 'Accounts', component: Accounts},
+  { path: '/departments', exact: true, name: 'Departments', component: Departments},
+  { path: '/departments/list', name: 'Departments', component: Departments},
+  { path: '/departments/add', name: 'Add Department', component: AddDepartment},
 ]
 export default routes;

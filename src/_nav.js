@@ -93,6 +93,23 @@ const SampleSideNav = {
       ]
     },
     {
+      name : "Departments",
+      icon : 'icon-list',
+      url: '/departments',
+      children: [
+        {
+          name : "List",
+          icon : 'icon-list',
+          url : '/departments/list',
+        },
+        {
+          name : "Add",
+          icon : 'icon-plus',
+          url : '/departments/add',
+        },
+      ]
+    },
+    {
       name : "About",
       icon : 'icon-list',
       url : '/about',
