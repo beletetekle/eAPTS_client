@@ -1,0 +1,8 @@
+
+  .animate:hover {background-color: #545454}
+  
+  .animate:active {
+    background-color: #545454;
+    box-shadow: 0 4px #bbbbbb;
+    transform: translateY(2px);
+  }

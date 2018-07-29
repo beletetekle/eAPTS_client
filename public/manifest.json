@@ -1,0 +1,15 @@
+{
+  "short_name": "HMIS",
+  "name": "Hospital Management Information System",
+  "icons": [
+    {
+      "src": "./favicon.png",
+      "sizes": "100x100",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
