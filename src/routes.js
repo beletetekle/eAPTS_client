@@ -11,6 +11,17 @@ const Home = Loadable({
   loading: Loading,
 });
 
+const Regions = Loadable({
+  loader: () => import('./views/address/regions/Regions'),
+  loading: Loading,
+});
+
+const AddRegion = Loadable({
+  loader: () => import('./views/address/regions/AddRegion'),
+  loading: Loading,
+});
+
+
 const About = Loadable({
   loader: () => import('./views/about/About'),
   loading: Loading,
@@ -20,5 +31,8 @@ const About = Loadable({
 const routes = [
   { path: '/home', exact: true, name: 'Home', component: Home},
   { path: '/about', exact: true, name: 'About', component: About},
+  { path: '/regions', exact: true, name: 'Regions', component: Regions},
+  { path: '/regions/list', name: 'Regions', component: Regions},
+  { path: '/regions/add', name: 'Add Region', component: AddRegion},
 ]
 export default routes;
