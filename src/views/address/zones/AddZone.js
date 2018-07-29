@@ -1,23 +1,27 @@
 import React, {Component} from 'react';
 import { Card, CardBody, CardHeader, Form, FormGroup, Input, Label, Button} from 'reactstrap';   
-class AddRegion extends Component {
+class AddZone extends Component {
   render(){
     return (
     
       <div>
         <Card>
               <CardHeader>
-                <strong>Add Region</strong>
+                <strong>Add Zone</strong>
               </CardHeader>
               <CardBody>
                 <FormGroup>
                   <Label htmlFor="name">Name</Label>
-                  <Input type="text" id="name" placeholder="Enter region name" />
+                  <Input type="text" id="name" placeholder="Enter zone name" />
+                </FormGroup>
+                <FormGroup>
+                  <Label htmlFor="description">Region</Label>
+                  <Input type="text" id="region" disabled="true" placeholder="Region" />
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="description">Description</Label>
                   <Input type="textarea" name="description" id="description" rows="9"
-                             placeholder="Enter region description" />
+                             placeholder="Enter zone description" />
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="admin">Admin</Label>
@@ -33,4 +37,4 @@ class AddRegion extends Component {
   }
 }
 
-export default AddRegion;
+export default AddZone;

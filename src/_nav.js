@@ -23,6 +23,23 @@ const SampleSideNav = {
       ]
     },
     {
+      name : "Zones",
+      icon : 'icon-list',
+      url: '/zones',
+      children: [
+        {
+          name : "List",
+          icon : 'icon-list',
+          url : '/zones/list',
+        },
+        {
+          name : "Add",
+          icon : 'icon-plus',
+          url : '/zones/add',
+        },
+      ]
+    },
+    {
       name : "About",
       icon : 'icon-list',
       url : '/about',
