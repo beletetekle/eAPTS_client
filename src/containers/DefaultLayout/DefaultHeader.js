@@ -15,7 +15,7 @@ const DefaultHeader  = (props) => {
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
         <AppNavbarBrand
-          full={{ src: null, width: 100, height: 25, alt: '' }}
+          full={{ src: null, width: 100, height: 25, alt: 'HMIS' }}
           minimized={{ src: null, width: 25, height: 25, alt: 'HMIS'}}
         />
         <AppSidebarToggler className="d-md-down-none" display="lg" />

@@ -11,7 +11,7 @@ import registerServiceWorker from './registerServiceWorker';
 const history = createBrowserHistory();
 const store = configureStore();
 
-store.dispatch(null);
+//store.dispatch(init);
 
 ReactDOM.render(
     <Provider store={store}>
