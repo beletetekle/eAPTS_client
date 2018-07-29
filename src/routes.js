@@ -16,9 +16,15 @@ const About = Loadable({
   loading: Loading,
 });
 
+const Accounts = Loadable({
+  loader: () => import('./views/accounts/Accounts'),
+  loading: Loading,
+});
+
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/home', exact: true, name: 'Home', component: Home},
   { path: '/about', exact: true, name: 'About', component: About},
+  { path: '/accounts', exact: true, name: 'Accounts', component: Accounts},
 ]
 export default routes;

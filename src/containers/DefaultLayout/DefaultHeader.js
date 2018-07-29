@@ -25,7 +25,7 @@ const DefaultHeader  = (props) => {
               <NavLink href="#/dashboard">Dashboard</NavLink>
             </NavItem>
             <NavItem className="px-3">
-              <NavLink href="#/">Accounts</NavLink>
+              <NavLink href="#/accounts">Accounts</NavLink>
             </NavItem>
             <NavItem className="px-3">
               <NavLink href="#/">Customers</NavLink>
