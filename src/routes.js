@@ -31,6 +31,16 @@ const AddZone = Loadable({
   loading: Loading,
 });
 
+const Woredas = Loadable({
+  loader: () => import('./views/address/woredas/Woredas'),
+  loading: Loading,
+});
+
+const AddWoreda = Loadable({
+  loader: () => import('./views/address/woredas/AddWoreda'),
+  loading: Loading,
+});
+
 
 const About = Loadable({
   loader: () => import('./views/about/About'),
@@ -47,5 +57,8 @@ const routes = [
   { path: '/zones', exact: true, name: 'Zones', component: Zones},
   { path: '/zones/list', name: 'Zones', component: Zones},
   { path: '/zones/add', name: 'Add Zone', component: AddZone},
+  { path: '/woredas', exact: true, name: 'Woredas', component: Woredas},
+  { path: '/woredas/list', name: 'Woredas', component: Woredas},
+  { path: '/woredas/add', name: 'Add Woreda', component: AddWoreda},
 ]
 export default routes;

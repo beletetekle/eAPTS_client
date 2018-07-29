@@ -40,6 +40,23 @@ const SampleSideNav = {
       ]
     },
     {
+      name : "Woredas",
+      icon : 'icon-list',
+      url: '/woredas',
+      children: [
+        {
+          name : "List",
+          icon : 'icon-list',
+          url : '/woredas/list',
+        },
+        {
+          name : "Add",
+          icon : 'icon-plus',
+          url : '/woredas/add',
+        },
+      ]
+    },
+    {
       name : "About",
       icon : 'icon-list',
       url : '/about',
