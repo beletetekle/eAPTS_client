@@ -22,13 +22,28 @@ const DefaultHeader  = (props) => {
 
           <Nav className="d-md-down-none" navbar>
             <NavItem className="px-3">
-              <NavLink href="#/">Module</NavLink>
+              <NavLink href="#/dashboard">Dashboard</NavLink>
             </NavItem>
             <NavItem className="px-3">
-              <NavLink href="#/">Module</NavLink>
+              <NavLink href="#/accounts">Accounts</NavLink>
             </NavItem>
             <NavItem className="px-3">
-              <NavLink href="#/">Module</NavLink>
+              <NavLink href="#/">Customers</NavLink>
+            </NavItem>
+            <NavItem className="px-3">
+              <NavLink href="#/dashboard">Cards</NavLink>
+            </NavItem>
+            <NavItem className="px-3">
+              <NavLink href="#/">Reports</NavLink>
+            </NavItem>
+            <NavItem className="px-3">
+              <NavLink href="#/">Customer Support</NavLink>
+            </NavItem>
+            <NavItem className="px-3">
+              <NavLink href="#/dashboard">User Management</NavLink>
+            </NavItem>
+            <NavItem className="px-3">
+              <NavLink href="#/">More...</NavLink>
             </NavItem>
           </Nav>
         <Nav className="ml-auto" navbar>
