@@ -61,6 +61,7 @@ const SampleSideNav = {
       icon : 'icon-list',
       url: '/health-institutes',
       children: [
+        
         {
           name : "List",
           icon : 'icon-list',
@@ -71,6 +72,24 @@ const SampleSideNav = {
           icon : 'icon-plus',
           url : '/health-institutes/add',
         },
+        {
+          name : "Categories",
+          icon : 'icon-list',
+          url : '/health-institutes/categories',
+          children: [
+            {
+              name : "List",
+              icon : 'icon-list',
+              url : '/health-institutes/categories/list',
+            },
+            {
+              name : "Add",
+              icon : 'icon-plus',
+              url : '/health-institutes/categories/add',
+            },
+          ]
+        },
+        
       ]
     },
     {

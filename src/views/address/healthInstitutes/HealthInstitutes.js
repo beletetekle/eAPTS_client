@@ -8,10 +8,10 @@ class HealthInstitutes extends Component {
       <div >
        <Card>
               <CardHeader>
-                HealthInstitutes
+                Health Institutes
               </CardHeader>
               <CardBody>
-                <Table responsive bordered>
+                <Table responsive bordered striped>
                   <thead>
                   <tr>
                     <th>Name</th>

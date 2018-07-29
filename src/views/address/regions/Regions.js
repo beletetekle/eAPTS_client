@@ -11,7 +11,7 @@ class Regions extends Component {
                 Regions
               </CardHeader>
               <CardBody>
-                <Table responsive bordered>
+                <Table responsive bordered striped>
                   <thead>
                   <tr>
                     <th>Name</th>

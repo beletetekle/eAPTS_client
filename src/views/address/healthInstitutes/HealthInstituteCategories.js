@@ -1,14 +1,14 @@
 import React, {Component} from 'react';
 import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
 
-class Zones extends Component {
+class HealthInstituteCategories extends Component {
   render(){
     return (
     
       <div >
        <Card>
               <CardHeader>
-                Zones
+                Health Institute Categories
               </CardHeader>
               <CardBody>
                 <Table responsive bordered striped>
@@ -16,16 +16,14 @@ class Zones extends Component {
                   <tr>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Region</th>
-                    <th>Admin</th>
+                   
                   </tr>
                   </thead>
                   <tbody>
                   <tr>
-                    <td>Zone 1</td>
-                    <td>This is a description for zone 1</td>
-                    <td>Region 1</td>
-                    <td>root</td>
+                    <td>Health Institute Category 1</td>
+                    <td>This is a description for Health Institute Category 1</td>
+                    
                   </tr>
                   </tbody>
                 </Table>
@@ -46,4 +44,4 @@ class Zones extends Component {
   }
 }
 
-export default Zones;
+export default HealthInstituteCategories;

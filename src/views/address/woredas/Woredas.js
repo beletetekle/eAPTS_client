@@ -11,7 +11,7 @@ class Woredas extends Component {
                 Woredas
               </CardHeader>
               <CardBody>
-                <Table responsive bordered>
+                <Table responsive bordered striped>
                   <thead>
                   <tr>
                     <th>Name</th>
