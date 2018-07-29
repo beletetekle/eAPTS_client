@@ -13,7 +13,7 @@ const DefaultAside = (props) => {
       <React.Fragment>
           <TabPane>
             <div className="aside-options">
-              TEst2
+                Notifications
             </div>
           </TabPane>
       </React.Fragment>
