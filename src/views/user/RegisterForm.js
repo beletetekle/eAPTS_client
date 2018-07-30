@@ -9,15 +9,15 @@ const RegisterForm = (props) => {
                     <CardHeader> HMIS </CardHeader>
                     <CardBody>
                         <FormGroup>
-                            <Input type="text" onChange={props.onChange} value={props.username} name="username" placeholder="Email" required/>
+                            <Input type="text" onChange={props.onChange} value={props.username} name="username" placeholder="UserName" required/>
                         </FormGroup>
                         <FormGroup>
                             <Input type="email" onChange={props.onChange} value={props.email} name="email" placeholder="Email" required/>
                         </FormGroup>
                         <FormGroup>
-                            <Input type="password" onChange={props.onChange} value={props.password} name="password" placeholder="password" required/>
+                            <Input type="password" onChange={props.onChange} value={props.password} name="password" placeholder="Password" required/>
                         </FormGroup>
-                        <FormGroup row>
+                        <FormGroup >
                             <Input type="select" name="accountTYpe" id="type" onChange={props.onChange}>
                                 <option value="0">Please select Account type</option>
                                 <option value="1">Admin </option>

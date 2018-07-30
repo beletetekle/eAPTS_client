@@ -20,8 +20,12 @@ class Register extends Component {
     };
 
     handleSubmit = () => {
-        const userData=this.state.userData;
-
+        const userData={
+            username:this.state.username,
+            password:this.state.password,
+            email:this.state.email,
+            accountType:this.state.account_type
+        }
         User.register(userData)
             .then(response => {
                 this.props.history.push('/home');
@@ -30,7 +34,6 @@ class Register extends Component {
                 console.error(error);
             });
     };
-
     render(){
     return (
       <div className="jumbotron">
