@@ -24,7 +24,7 @@ class Register extends Component {
             username:this.state.username,
             password:this.state.password,
             email:this.state.email,
-            accountType:this.state.account_type
+            account_type:this.state.account_type
         }
         User.register(userData)
             .then(response => {

@@ -114,7 +114,47 @@ class User {
     };
 
     static register = (values) => {
-
+        if (values.email && values.password) {
+            return Api.create(pluralName, values)
+                .then(
+                    response => {
+                        //console.log(response);
+                        ClientSession.storeAuth(response.data, err => {
+                            err ? console.error('cannot save session') : ''
+                        });
+                        
+                        return {
+                            success: true,
+                            message: "Registered successfully ",
+                            user: response.data
+                        }
+                    },
+                    error => {
+                        console.log("Error",error);
+                        if (error.response) {
+                            if (error.response.status == 422) {
+                                return {
+                                    error: true,
+                                    message: error.response.data.error.message
+                                }
+                            }
+                        }else{
+                            console.log("the general error1 is ",error);
+                            return {
+                                error: true,
+                                message: "Oops error occurred please. Try Again"
+                        }
+                        }
+                        
+                    }
+                ).catch(error => {
+                    console.log("the general error1 is ",error);
+                    return {
+                        error: true,
+                        message: "Oops error Occurred please. Try Again"
+                    }
+                })
+        }  
     };
 
     static logout = () => {
