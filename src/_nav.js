@@ -16,9 +16,9 @@ const SampleSideNav = {
       url : '/test',
     },
     {
-      name : "Test",
+      name : "Medicine",
       icon : 'icon-plus',
-      url : '/test',
+      url : '/medicine',
     }
   ]
 }

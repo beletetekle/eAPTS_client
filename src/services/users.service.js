@@ -1,7 +1,7 @@
 import Api from './api';
 import ClientSession from './client-session.js';
 
-const pluralName = 'users';
+const pluralName = 'InternalUsers';
 
 class User {
 
