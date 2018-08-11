@@ -41,8 +41,7 @@ const NewMedicieneForm = (props) => {
                                 </FormGroup>
                               </Col>
                             </FormGroup>
-                           
-                            <Button onClick={props.onClick}> Register </Button>
+                                 <Button onClick={props.onClick}> Register </Button>
                         </CardBody>
                     </Card>
             </Col>

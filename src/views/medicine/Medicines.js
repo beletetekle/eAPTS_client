@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import {Alert, Card, CardBody, CardHeader, Col, Row, Table} from "reactstrap";
+import {Alert, Card, CardBody, CardHeader, Col, Row, Table,FormGroup,Input,Button} from "reactstrap";
 import LoadingSpinner from "../../containers/common/LoadingSpinner";
 import Medicine from './Medicine';
 import Api  from '../../services/api';
@@ -44,7 +44,7 @@ class Medicines extends Component{
             <div className="animated fadeIn">
             
                 <Row>
-                    <Col xs="12" md="10">
+                    <Col xs="12" md="12">
                             <Card>
                                 <CardHeader>
                                     <i className="fa fa-align-justify"/> Medicines
@@ -60,8 +60,77 @@ class Medicines extends Component{
                                                 <th scope="col">volume</th>
                                                 <th scope="col">Action</th>
                                             </tr>
+                                            <tr>
+                                                <th>
+                                                    <FormGroup>
+                                                        <Input type="text" 
+                                                        name="name" placeholder=" medicine" required/>
+                                                    </FormGroup>
+                                                </th>
+                                                <th>
+                                                    <FormGroup>
+                                                        <Input type="text" 
+                                                        name="name" placeholder=" medicine" required/>
+                                                    </FormGroup>
+                                                </th>
+                                                <th>
+                                                    <FormGroup>
+                                                        <Input type="text"  
+                                                        name="name" placeholder=" medicine" required/>
+                                                    </FormGroup>
+                                                </th>
+                                                <th>
+                                                    <FormGroup>
+                                                        <Input type="text" 
+                                                        name="name" placeholder=" medicine" required/>
+                                                    </FormGroup>
+                                                </th>
+                                                <th>
+                                                    <FormGroup>
+                                                        <Input type="text" 
+                                                        name="name" placeholder=" medicine" required/>
+                                                    </FormGroup>
+                                                </th>
+                                                <th>
+                                                    <FormGroup>
+                                                        <Button size="sm" color="success"> Register </Button>
+                                                    </FormGroup>
+                                                </th>
+                                             </tr>
                                         </thead>
                                         <tbody>
+                                        <tr>
+                                                <th scope="col">Name </th>
+                                                <th scope="col"> Code</th>
+                                                <th scope="col">strength</th>
+                                                <th scope="col">size</th>
+                                                <th scope="col">volume</th>
+                                                <th scope="col">Action</th>
+                                        </tr>
+                                        <tr>
+                                                <th scope="col">Name </th>
+                                                <th scope="col"> Code</th>
+                                                <th scope="col">strength</th>
+                                                <th scope="col">size</th>
+                                                <th scope="col">volume</th>
+                                                <th scope="col">Action</th>
+                                        </tr>
+                                        <tr>
+                                                <th scope="col">Name </th>
+                                                <th scope="col"> Code</th>
+                                                <th scope="col">strength</th>
+                                                <th scope="col">size</th>
+                                                <th scope="col">volume</th>
+                                                <th scope="col">Action</th>
+                                        </tr>
+                                        <tr>
+                                                <th scope="col">Name </th>
+                                                <th scope="col"> Code</th>
+                                                <th scope="col">strength</th>
+                                                <th scope="col">size</th>
+                                                <th scope="col">volume</th>
+                                                <th scope="col">Action</th>
+                                        </tr>
                                             {loading ? <tr>
                                             <td><LoadingSpinner/></td>
                                             </tr> : listMedicine}
