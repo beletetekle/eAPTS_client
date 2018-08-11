@@ -58,6 +58,7 @@ class Medicines extends Component{
                                                 <th scope="col">strength</th>
                                                 <th scope="col">size</th>
                                                 <th scope="col">volume</th>
+                                                <th scope="col">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
