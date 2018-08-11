@@ -3,6 +3,7 @@ import {Alert, Card, CardBody, CardHeader, Col, Row, Table,FormGroup,Input,Butto
 import LoadingSpinner from "../../containers/common/LoadingSpinner";
 import Medicine from './Medicine';
 import Api  from '../../services/api';
+import {Icon} from 'antd';
 
 class Medicines extends Component{
 
@@ -24,6 +25,10 @@ class Medicines extends Component{
         })
     }
 
+    onAddMedicineForm=() =>{
+
+    }
+
     render(){
         const MedicineList=this.state.Medicines;
         const loading=this.state.loading;
@@ -42,9 +47,11 @@ class Medicines extends Component{
         });
         return(
             <div className="animated fadeIn">
-            
                 <Row>
                     <Col xs="12" md="12">
+                            <Row type="flex" justify="end">
+                                <Icon onClick={this.onAddMedicineForm} type="plus-circle-o" style={{fontSize: 36}} />
+                            </Row>
                             <Card>
                                 <CardHeader>
                                     <i className="fa fa-align-justify"/> Medicines
@@ -60,77 +67,8 @@ class Medicines extends Component{
                                                 <th scope="col">volume</th>
                                                 <th scope="col">Action</th>
                                             </tr>
-                                            <tr>
-                                                <th>
-                                                    <FormGroup>
-                                                        <Input type="text" 
-                                                        name="name" placeholder=" medicine" required/>
-                                                    </FormGroup>
-                                                </th>
-                                                <th>
-                                                    <FormGroup>
-                                                        <Input type="text" 
-                                                        name="name" placeholder=" medicine" required/>
-                                                    </FormGroup>
-                                                </th>
-                                                <th>
-                                                    <FormGroup>
-                                                        <Input type="text"  
-                                                        name="name" placeholder=" medicine" required/>
-                                                    </FormGroup>
-                                                </th>
-                                                <th>
-                                                    <FormGroup>
-                                                        <Input type="text" 
-                                                        name="name" placeholder=" medicine" required/>
-                                                    </FormGroup>
-                                                </th>
-                                                <th>
-                                                    <FormGroup>
-                                                        <Input type="text" 
-                                                        name="name" placeholder=" medicine" required/>
-                                                    </FormGroup>
-                                                </th>
-                                                <th>
-                                                    <FormGroup>
-                                                        <Button size="sm" color="success"> Register </Button>
-                                                    </FormGroup>
-                                                </th>
-                                             </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                                <th scope="col">Name </th>
-                                                <th scope="col"> Code</th>
-                                                <th scope="col">strength</th>
-                                                <th scope="col">size</th>
-                                                <th scope="col">volume</th>
-                                                <th scope="col">Action</th>
-                                        </tr>
-                                        <tr>
-                                                <th scope="col">Name </th>
-                                                <th scope="col"> Code</th>
-                                                <th scope="col">strength</th>
-                                                <th scope="col">size</th>
-                                                <th scope="col">volume</th>
-                                                <th scope="col">Action</th>
-                                        </tr>
-                                        <tr>
-                                                <th scope="col">Name </th>
-                                                <th scope="col"> Code</th>
-                                                <th scope="col">strength</th>
-                                                <th scope="col">size</th>
-                                                <th scope="col">volume</th>
-                                                <th scope="col">Action</th>
-                                        </tr>
-                                        <tr>
-                                                <th scope="col">Name </th>
-                                                <th scope="col"> Code</th>
-                                                <th scope="col">strength</th>
-                                                <th scope="col">size</th>
-                                                <th scope="col">volume</th>
-                                                <th scope="col">Action</th>
-                                        </tr>
                                             {loading ? <tr>
                                             <td><LoadingSpinner/></td>
                                             </tr> : listMedicine}
