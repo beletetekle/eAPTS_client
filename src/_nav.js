@@ -138,7 +138,12 @@ const SampleSideNav = {
       name: "Importer & Suplier",
       icon: 'fa fa-truck',
       url: '/ImporterAndSupplier',
-    }
+    },
+    {
+      name : "Patients",
+      icon: 'fa fa-user',
+      url : '/Patients',
+    },
   ]
 }
 
