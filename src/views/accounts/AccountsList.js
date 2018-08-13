@@ -1,6 +1,7 @@
 import React from 'react';
 import { Card, CardBody, CardHeader, Table, Button } from 'reactstrap';
-import Link from 'react-router-dom/Link'
+import Link from 'react-router-dom/Link';
+import { Icon } from 'antd';
 
 const AccountRow = (account, idx) => {
     return (
@@ -26,7 +27,12 @@ const AccountsList = ({accounts, onClick}) => {
     this.onClick = onClick;
     return (
         <Card>
-            {/* <CardHeader>Accounts</CardHeader> */}
+            <CardHeader>
+                Accounts
+                <Link to={`/register`} >
+                    <span className='float-right'>New Account</span>
+                </Link>
+            </CardHeader>
             <CardBody>
                 <Table responsive striped>
                     <thead>
