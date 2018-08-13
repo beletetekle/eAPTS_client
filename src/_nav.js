@@ -123,6 +123,21 @@ const SampleSideNav = {
       name : "Medicine",
       icon : 'icon-plus',
       url : '/medicine',
+    },
+    {
+      name : "Region",
+      icon: 'icon-location-pin',
+      url : '/Region',
+    },
+    {
+      name: "Health Facility",
+      icon: 'fa fa-medkit',
+      url: '/HF',
+    },
+    {
+      name: "Importer & Suplier",
+      icon: 'fa fa-truck',
+      url: '/ImporterAndSupplier',
     }
   ]
 }

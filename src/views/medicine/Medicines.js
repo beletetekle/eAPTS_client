@@ -3,6 +3,7 @@ import {Alert, Card, CardBody, CardHeader, Col, Row, Table,FormGroup,Input,Butto
 import LoadingSpinner from "../../containers/common/LoadingSpinner";
 import Medicine from './Medicine';
 import Api  from '../../services/api';
+import '../../../node_modules/antd/dist/antd.css';
 import {Icon} from 'antd';
 
 class Medicines extends Component{
@@ -26,7 +27,7 @@ class Medicines extends Component{
     }
 
     onAddMedicineForm=() =>{
-
+        this.props.history.push('/new-Medicine');
     }
 
     render(){
@@ -47,15 +48,16 @@ class Medicines extends Component{
         });
         return(
             <div className="animated fadeIn">
+            <Row type="flex" justify="end">
+                <Icon onClick={this.onAddMedicineForm} type="plus-circle-o" style={{fontSize: 36,float:"right"}} />
+            </Row>
                 <Row>
                     <Col xs="12" md="12">
-                            <Row type="flex" justify="end">
-                                <Icon onClick={this.onAddMedicineForm} type="plus-circle-o" style={{fontSize: 36}} />
-                            </Row>
-                            <Card>
-                                <CardHeader>
-                                    <i className="fa fa-align-justify"/> Medicines
-                                </CardHeader>
+                            
+                     <Card>
+                     <CardHeader>
+                        <i className="fa fa-align-justify"/> Medicines
+                    </CardHeader>
                                 <CardBody>
                                     <Table responsive hover>
                                         <thead>
@@ -78,6 +80,7 @@ class Medicines extends Component{
                         </Card>
                     </Col>
                 </Row>
+               
         </div>
         )
     }
