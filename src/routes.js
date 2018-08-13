@@ -91,11 +91,6 @@ const AddMedicine=Loadable({
   loading:Loading
 })
 
-const Region = Loadable({
-  loader: () =>
-    import ('./views/Region/Regions'),
-  loading: Loading
-})
 
 const HealthFacility = Loadable({
   loader: () =>
@@ -109,11 +104,17 @@ const ImporterAndSupplier = Loadable({
   loading: Loading
 })
 
-const Register = Loadable({
+const Patients = Loadable({
   loader: () =>
-    import ('./views/user/Register'),
+    import ('./views/Patients/Patients'),
   loading: Loading
 })
+
+const AddPatient=Loadable({
+  loader:() =>import('./views/Patients/AddPatientForm'),
+  loading:Loading
+})
+
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -143,7 +144,9 @@ const routes = [
   { path : '/new-medicine',exact:true ,name:'Medicines',component:AddMedicine},
   { path : '/Region',exact:true ,name:'Region',component:Region},
   { path : '/HF',exact:true ,name:'HealthFacility',component:HealthFacility},
-  { path : '/ImporterAndSupplier',exact:true ,name:'ImporterAndSupplier',component:ImporterAndSupplier}
+  { path : '/ImporterAndSupplier',exact:true ,name:'ImporterAndSupplier',component:ImporterAndSupplier},
+  { path : '/Patients',exact:true ,name:'Patients',component:Patients},
+  { path : '/Patients/add',exact:true ,name:'New Patient',component:AddPatient},
 
 ]
 export default routes;

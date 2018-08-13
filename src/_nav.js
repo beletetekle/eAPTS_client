@@ -61,7 +61,7 @@ const SampleSideNav = {
       icon : 'icon-list',
       url: '/health-institutes',
       children: [
-        
+
         {
           name : "List",
           icon : 'icon-list',
@@ -89,7 +89,7 @@ const SampleSideNav = {
             },
           ]
         },
-        
+
       ]
     },
     {
@@ -124,11 +124,7 @@ const SampleSideNav = {
       icon : 'icon-plus',
       url : '/medicine',
     },
-    {
-      name : "Region",
-      icon: 'icon-location-pin',
-      url : '/Region',
-    },
+    
     {
       name: "Health Facility",
       icon: 'fa fa-medkit',
@@ -138,7 +134,12 @@ const SampleSideNav = {
       name: "Importer & Suplier",
       icon: 'fa fa-truck',
       url: '/ImporterAndSupplier',
-    }
+    },
+    {
+      name : "Patients",
+      icon: 'fa fa-user',
+      url : '/Patients',
+    },
   ]
 }
 
