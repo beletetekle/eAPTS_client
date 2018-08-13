@@ -120,9 +120,9 @@ const SampleSideNav = {
       url : '/test',
     },
     {
-      name : "Test2",
+      name : "Medicine",
       icon : 'icon-plus',
-      url : '/test',
+      url : '/medicine',
     }
   ]
 }

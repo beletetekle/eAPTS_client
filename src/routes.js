@@ -81,6 +81,11 @@ const Accounts = Loadable({
   loading: Loading,
 });
 
+const Medicine=Loadable({
+  loader:() =>import('./views/medicine/Medicines'),
+  loading:Loading
+})
+
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/home', exact: true, name: 'Home', component: Home},
@@ -104,5 +109,6 @@ const routes = [
   { path: '/departments', exact: true, name: 'Departments', component: Departments},
   { path: '/departments/list', name: 'Departments', component: Departments},
   { path: '/departments/add', name: 'Add Department', component: AddDepartment},
+  { path : '/medicine',exact:true ,name:'Medicines',component:Medicine}
 ]
 export default routes;
