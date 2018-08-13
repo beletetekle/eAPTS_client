@@ -26,11 +26,18 @@ const Medicine=Loadable({
   loading:Loading
 })
 
+const AddMedicine=Loadable({
+  loader:() =>import('./views/medicine/Create/AddMedicine'),
+  loading:Loading
+})
+
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/home', exact: true, name: 'Home', component: Home},
   { path: '/about', exact: true, name: 'About', component: About},
   { path: '/accounts', exact: true, name: 'Accounts', component: Accounts},
-  { path : '/medicine',exact:true ,name:'Medicines',component:Medicine}
+  { path : '/medicine',exact:true ,name:'Medicines',component:Medicine},
+  { path : '/new-medicine',exact:true ,name:'Medicines',component:AddMedicine}
+
 ]
 export default routes;
