@@ -65,13 +65,13 @@ class ProductInfo extends React.Component {
             <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
                       <ModalHeader toggle={this.toggle}>Add {this.props.title}</ModalHeader>
                       <ModalBody>
-                      </ModalBody>
                         <ItemForm onChange={this.props.onChange} title={this.props.title}
                             name={this.props.name}
                             strength={this.props.strength}
                             volume={this.props.volume}
                             size={this.props.size}
                         />
+                      </ModalBody>
                       <ModalFooter>
                         <Button color="primary" onClick={this.addItem}>Add</Button>
                         <Button color="secondary" onClick={this.toggle}>Cancel</Button>

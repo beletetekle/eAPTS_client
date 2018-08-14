@@ -147,7 +147,6 @@ class AddMedicine extends Component{
                     medicineCode={this.state.medicineCode}
                     medicineDescription={this.state.medicineDescription}
                 />    
-             <Button onClick={this.handleSubmit} color="info" style={{marginTop: "1em"}}> Register </Button>
             </div>
         )
     }

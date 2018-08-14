@@ -1,6 +1,6 @@
 import React from 'react';
-import { Steps, message } from 'antd';
-import {Button, Card, CardHeader, CardBody, Input, Col, Container, Row, FormGroup, TabPane, TabContent, Nav, NavItem, NavLink    } from 'reactstrap';
+import { Steps, message, Button } from 'antd';
+import { Card, CardHeader, CardBody, Input, Col, Container, Row, FormGroup, TabPane, TabContent, Nav, NavItem, NavLink    } from 'reactstrap';
 import classnames from 'classnames';
 import ProductInfoContainer from './ProductInfoContainer';
 import CounsellingInfo from './CounsellingInfo';
@@ -62,11 +62,11 @@ class NewMedicieneForm extends React.Component {
         <div className="steps-action">
           {
             current < steps.length - 1
-            && <Button type="primary" onClick={() => this.next()}>Next</Button>
+            && <Button type="primary" onClick={() => this.next()} >Next</Button>
           }
           {
             current === steps.length - 1
-            && <Button type="primary" onClick={() => message.success('Processing complete!')}>Done</Button>
+            && <Button type="primary" onClick={this.props.onClick}>Done</Button>
           }
           {
             current > 0
