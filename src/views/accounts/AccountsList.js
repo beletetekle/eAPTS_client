@@ -7,7 +7,7 @@ const AccountRow = (account, idx) => {
     return (
         <tr className="" key={idx}>
             <td>
-                <Link to={`/accounts/${account}`}>{account.first_name+" "+account.last_name}</Link>
+                <Link to={`/accounts/`}>{account.first_name+" "+account.last_name}</Link>
             </td>
             <td> {account.email}</td>
             <td> {account.username}</td>
@@ -16,7 +16,7 @@ const AccountRow = (account, idx) => {
             <td> </td>
             <td>{account.emailVerified? "Active": "InActive"} </td>
             <td>
-                <Button onClick={() => {this.onClick(account)}}>Delete</Button>
+                <Button onClick={() => {this.onClick(account.id)}}>Delete</Button>
             </td>
         </tr>
     );

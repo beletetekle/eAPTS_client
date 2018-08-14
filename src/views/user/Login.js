@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'; 
+import '../../../node_modules/antd/dist/antd.css';
 import LoginForm from './LoginForm';
 import { message } from 'antd';
 import User from '../../services/users.service'
