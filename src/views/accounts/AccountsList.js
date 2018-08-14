@@ -34,6 +34,7 @@ const AccountsList = ({accounts, onClick}) => {
                 </Link>
             </CardHeader>
             <CardBody>
+                {accounts.length?
                 <Table responsive striped>
                     <thead>
                         <tr>
@@ -49,9 +50,13 @@ const AccountsList = ({accounts, onClick}) => {
                         </tr>
                     </thead>
                     <tbody>
-                        { accounts.map(AccountRow, this) }
+                        {accounts.map(AccountRow, this) }
                     </tbody>
-                </Table>          
+                </Table>
+                : <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    <p> There are no users you created! </p>
+                  </div>
+                }          
             </CardBody>
         </Card>
     );
