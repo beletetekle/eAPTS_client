@@ -32,7 +32,7 @@ class Register extends Component {
 
     componentDidMount = () => {
       ClientSession.getAuth((err, user) => {
-        const roles = user.user.roles.map(val => val.role.name);
+        const roles = user.internalUser.roles.map(val => val.role.name);
         if ( roles.includes('super-admin') ) {
           this.setState({ roleOptions: ['Super Admin', 'Region Admin', 'Zone Admin', 'Woreda Admin', 'Health Center Admin', 'Store Admin', 'Importer Supplier']});
         } else if( roles.includes('region-admin') ) {
