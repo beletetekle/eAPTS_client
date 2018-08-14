@@ -110,6 +110,57 @@ const SampleSideNav = {
       ]
     },
     {
+      name : "Patient Type",
+      icon : 'icon-list',
+      url: '/patient-type',
+      children: [
+        {
+          name : "List",
+          icon : 'icon-list',
+          url: '/patient-type/list',
+        },
+        {
+          name : "Add",
+          icon : 'icon-plus',
+          url: '/patient-type/add',
+        },
+      ]
+    },
+    {
+      name : "Diagnostic",
+      icon : 'icon-list',
+      url: '/diagnostic',
+      children: [
+        {
+          name : "List",
+          icon : 'icon-list',
+          url: '/diagnostic/list',
+        },
+        {
+          name : "Add",
+          icon : 'icon-plus',
+          url: '/diagnostic/add',
+        },
+      ]
+    },
+    {
+      name : "Medical Equipment",
+      icon : 'icon-list',
+      url: '/medical-equipmnet',
+      children: [
+        {
+          name : "List",
+          icon : 'icon-list',
+          url: '/medical-equipmnet/list',
+        },
+        {
+          name : "Add",
+          icon : 'icon-plus',
+          url: '/medical-equipmnet/add',
+        },
+      ]
+    },
+    {
       name : "About",
       icon : 'icon-list',
       url : '/about',

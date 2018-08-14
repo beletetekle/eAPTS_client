@@ -115,11 +115,43 @@ const AddPatient=Loadable({
   loading:Loading
 })
 
+const PatientType = Loadable({
+  loader: () => import('./views/paitentType/PatientTypes'),
+  loading: Loading,
+});
+
+const AddPatientType = Loadable({
+  loader: () => import('./views/paitentType/AddPatientType'),
+  loading: Loading,
+});
+
+const Diagnostic = Loadable({
+  loader: () =>
+    import ('./views/Diagnostic/Diagnostics'),
+  loading: Loading,
+});
+
+const AddDiagnostic = Loadable({
+  loader: () =>
+    import ('./views/Diagnostic/AddDiagnostic'),
+  loading: Loading,
+});
+
+const MedicalEquipment = Loadable({
+  loader: () =>
+    import ('./views/MedicalEquipment/MedicalEquipments'),
+  loading: Loading,
+});
+
+const AddMedicalEquipment = Loadable({
+  loader: () =>
+    import ('./views/MedicalEquipment/AddMedicalEquipment'),
+  loading: Loading,
+});
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/home', exact: true, name: 'Home', component: Home},
-  { path: '/register', exact: true, name: 'Register', component: Register},
   { path: '/about', exact: true, name: 'About', component: About},
   { path: '/regions', exact: true, name: 'Regions', component: Regions},
   { path: '/regions/list', name: 'Regions', component: Regions},
@@ -142,11 +174,23 @@ const routes = [
   { path: '/departments/add', name: 'Add Department', component: AddDepartment},
   { path : '/medicine',exact:true ,name:'Medicines',component:Medicine},
   { path : '/new-medicine',exact:true ,name:'Medicines',component:AddMedicine},
-  { path : '/Region',exact:true ,name:'Region',component:Region},
+
   { path : '/HF',exact:true ,name:'HealthFacility',component:HealthFacility},
   { path : '/ImporterAndSupplier',exact:true ,name:'ImporterAndSupplier',component:ImporterAndSupplier},
   { path : '/Patients',exact:true ,name:'Patients',component:Patients},
   { path : '/Patients/add',exact:true ,name:'New Patient',component:AddPatient},
 
-]
+  { path: '/patient-type', exact: true, name: 'Patient Type', component: PatientType},
+  { path: '/patient-type/list', name: 'Patient Type', component: PatientType},
+  { path: '/patient-type/add', name: 'Add Patient Type', component: AddPatientType},
+
+  { path: '/diagnostic', exact: true, name: 'Diagnostic', component: Diagnostic},
+  { path: '/diagnostic/list', name: 'Diagnostic', component: Diagnostic},
+  { path: '/diagnostic/add', name: 'Add Diagnostic', component: AddDiagnostic},
+
+  { path: '/medical-equipmnet', exact: true, name: 'Medical Equipment', component: MedicalEquipment},
+  { path: '/medical-equipmnet/list', name: 'Medical Equipment', component: MedicalEquipment},
+  { path: '/medical-equipmnet/add', name: 'Add Medical Equipment', component: AddMedicalEquipment},
+
+] 
 export default routes;
