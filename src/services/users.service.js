@@ -114,18 +114,61 @@ class User {
     };
 
     static register = (values) => {
-        if (values.email && values.password) {
+        // const url = pluralName;
+        /**
+         * this one will double check if the required field is g fill or not (email and password)
+         */
+
+        if (values.email && values.username) {
             return Api.create(pluralName, values)
                 .then(
                     response => {
                         //console.log(response);
-                        ClientSession.storeAuth(response.data, err => {
-                            err ? console.error('cannot save session') : ''
-                        });
-                        
+                        // Since Registration is admin only we dont store auth here
+                        // ClientSession.storeAuth(response.data, err => {
+                        //     err ? console.error('cannot save session') : ''
+                        // });
+                        // get  the user id and by checking the the role  we can
+
+                        const userId=response.data.id;
+                        // get the id where name is admin or manger
+                        //create the road mapping
+                        // const filter2 = `filter={"where":{"or" : [{"first_name":{"like":".*${name}.*"}},{"last_name":{"like":".*${name}.*"}}]}}`;
+
+                        let filter = '';
+                        if (values.role == 'Super Admin'){
+                            filter = `filter={"where":{"name":"super-admin"}}`;
+                        } else if (values.role == 'Region Admin') {
+                            filter = `filter={"where":{"name":"region-admin"}}`;
+                        }  else if (values.role == 'Zone Admin') {
+                            filter = `filter={"where":{"name":"region-admin"}}`;
+                        }  else if (values.role == 'Woreda Admin') {
+                            filter = `filter={"where":{"name":"woreda-admin"}}`;
+                        }  else if (values.role == 'Health Center Admin') {
+                            filter = `filter={"where":{"name":"health-admin"}}`;
+                        }  else if (values.role == 'Store Admin') {
+                            filter = `filter={"where":{"name":"store-admin"}}`;
+                        }  else if (values.role == 'Importer Supplier') {
+                            filter = `filter={"where":{"name":"importer-supplier"}}`;
+                        }  
+
+
+                        Api.find('roles',null,filter)
+                            .then((response) =>{
+                                console.log("Role id ",response.data);
+                                const roleId=response.data[0].id;
+                                const roleData={
+                                    "principalType": "USER",
+                                    "principalId": userId,
+                                    "roleId": roleId
+                                };
+                                Api.create('roleMappings',roleData)
+                                    .then((response) =>{})
+                            });
+
                         return {
                             success: true,
-                            message: "Registered successfully ",
+                            message: "Registered successfully! Check email to confirm account",
                             user: response.data
                         }
                     },
@@ -145,7 +188,7 @@ class User {
                                 message: "Oops error occurred please. Try Again"
                         }
                         }
-                        
+
                     }
                 ).catch(error => {
                     console.log("the general error1 is ",error);
@@ -154,9 +197,9 @@ class User {
                         message: "Oops error Occurred please. Try Again"
                     }
                 })
-        }  
-    };
+        }
 
+    };
     static logout = () => {
         ClientSession.getAccessToken(function (isLoggedIn, authData) {
             if (isLoggedIn && authData != null) {
