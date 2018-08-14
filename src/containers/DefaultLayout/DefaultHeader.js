@@ -64,7 +64,7 @@ class DefaultHeader extends Component {
         <Nav className="ml-auto" navbar>
           <AppHeaderDropdown direction="down">
             <DropdownToggle nav>
-              <img src={maleDefaultImage} style={{width:"35px"}}/>
+              <img src={maleDefaultImage} className="img-avatar"/>
             </DropdownToggle>
             <DropdownMenu right style={{ right: 'auto' }}>
               <DropdownItem onClick={this.onLogoutHandle}><i className="fa fa-lock"/>
