@@ -149,9 +149,16 @@ const AddMedicalEquipment = Loadable({
   loading: Loading,
 });
 
+const Register = Loadable({
+  loader: () =>
+    import ('./views/user/Register'),
+  loading: Loading
+})
+
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/home', exact: true, name: 'Home', component: Home},
+  { path: '/register', exact: true, name: 'Register', component: Register},
   { path: '/about', exact: true, name: 'About', component: About},
   { path: '/regions', exact: true, name: 'Regions', component: Regions},
   { path: '/regions/list', name: 'Regions', component: Regions},
