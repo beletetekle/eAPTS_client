@@ -14,7 +14,7 @@ const AccountRow = (account, idx) => {
             <td> {account.role}</td>
             <td> </td>
             <td> </td>
-            <td> </td>
+            <td>{account.emailVerified? "Active": "InActive"} </td>
             <td>
                 <Button onClick={() => {this.onClick(account)}}>Delete</Button>
             </td>
@@ -44,7 +44,7 @@ const AccountsList = ({accounts, onClick}) => {
                             <th> Last Access</th>
                             <th> Activity</th>
                             <th> Status</th>
-                            <th> ... </th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
