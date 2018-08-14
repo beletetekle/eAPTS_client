@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Col, Card, CardBody, CardHeader, FormGroup, Input, Label, Button} from 'reactstrap';
+import {Alert,Row, Col, Card, CardBody, CardHeader, FormGroup, Input, Label, Button} from 'reactstrap';
 import {AvField, AvForm, AvGroup} from "availity-reactstrap-validation";
 import Api  from '../../../services/api';
 
@@ -9,10 +9,28 @@ class AddRegion extends Component {
     super(props);
      this.state={
         Regions:[],
-        loading:false
+        loading:false,
+        errorMessage : "",
+        errVis : false,
+        sucMessage : "",
+        sucVis : false,
     }
   }
 
+  messageSuc = ( message )=>{
+    this.setState({sucVis: true, sucMessage: message, errVis: false},
+      () => setTimeout(() => {
+        this.props.history.push('/');
+      }, 2000));
+  };
+
+  onDismiss = ()=>{
+    this.setState({sucVis : false, errVis : false})
+  };
+
+  messageErr =( message )=>{
+    this.setState({sucVis : false, errorMessage : message, errVis : true})
+  };
 
   handleInvalidSubmit(event, errors, values) {
     this.setState({errors, values});
@@ -24,17 +42,26 @@ class AddRegion extends Component {
     }
     Api.create('Regions',RegionData,null)
     .then((response) =>{
-        this.props.history.push('/regions');
+      // this.messageSuc('Region  Created  Successfully !');
         // todo call the alert
     })
     .catch((error) =>{
+      // this.messageErr('Oops! Create failed!');
         console.log(error);
     });
   }
   render(){
     return (
       <div>
-        <Col md={{ size: 8, offset: 2 }}>
+        <Row>
+          <Col xs="12" md="12">
+                        <Alert color="success" isOpen={this.state.sucVis} toggle={this.onDismiss}>
+                        { this.state.sucMessage }
+                        </Alert>
+
+                        <Alert color="danger" isOpen={this.state.errVis} toggle={this.onDismiss}>
+                        { this.state.errorMessage}
+                        </Alert>
           <Card>
           <AvForm
                 onValidSubmit={this.handleValidSubmit}
@@ -72,7 +99,8 @@ class AddRegion extends Component {
               </CardBody>
             </AvForm>
             </Card>
-        </Col>
+          </Col>
+        </Row>
       </div>
     );
   }
