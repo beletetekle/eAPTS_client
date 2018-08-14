@@ -62,9 +62,11 @@ class BinCard extends Component{
                                         <thead>
                                             <tr>
                                                 <th scope="col">Name </th>
-                                                <th scope="col"> Batch Number</th>
+                                                <th scope="col">Received</th>
                                                 <th scope="col">Issued</th>
+                                                <th scope="col">Batch Number</th>
                                                 <th scope="col">Expiry Date</th>
+                                                <th scope="col">Remark</th>
                                             </tr>
                                         </thead>
                                         <tbody>

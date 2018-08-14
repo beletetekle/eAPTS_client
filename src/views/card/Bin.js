@@ -12,9 +12,12 @@ class Bin extends Component{
         <td> 
             {this.props.name}
         </td>
-        <td>{this.props.batchno}</td>
+
+        <td>{this.props.received}</td>
         <td>{this.props.issued}</td>
+        <td>{this.props.batchno}</td>
         <td>{this.props.expdate}</td>
+        <td>{this.props.remark}</td>
       </tr>
     )
   }

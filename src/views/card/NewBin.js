@@ -12,6 +12,10 @@ class NewBin extends Component{
             name:"",
             expdate:"",
             issued:"",
+            received:"",
+            remark:"",
+            medicine:"",
+            medicine_list: ["M1","M2", "M3"]
         }
     }
     onChange = (event) => {
@@ -23,7 +27,9 @@ class NewBin extends Component{
         const medicineBin={
             name:this.state.name,
             expiryDate:this.state.expdate,
-            issued:this.state.issued
+            issued:this.state.issued,
+            received:this.state.received,
+            remark:this.state.remark
         }
         Api.create('MedicineBins',medicineBin,null)
         .then((response) =>{
@@ -43,9 +49,38 @@ class NewBin extends Component{
                     <Card>
                         <CardHeader> Add Medicine Batch </CardHeader>
                         <CardBody>
-                            <FormGroup>
-                                <Input type="text" onChange={this.onChange} value={this.state.name} 
-                                name="name" placeholder="Name" required/>
+                            <FormGroup row className="my-0">
+                                <Col xs="6">
+                                <FormGroup>
+                                    <Input type="text" onChange={this.onChange} value={this.state.name} 
+                                        name="name" placeholder="Name" required/>
+                                </FormGroup>
+                                </Col>
+                                <Col xs="6">
+                                <FormGroup>
+                                    <Input type="select" onChange={this.onChange} name="medicine" required>
+                                    {this.state.medicine_list.map((med, idx)=> {
+                                            return(
+                                                <option key={idx}>{med}</option>
+                                            );
+                                        })}
+                                    </Input>
+                                </FormGroup>
+                                </Col>
+                            </FormGroup>
+                            <FormGroup row className="my-0">
+                              <Col xs="6">
+                                <FormGroup>
+                                    <Input type="number" onChange={this.onChange} value={this.state.received} 
+                                    name="received" placeholder="Received"/>
+                                </FormGroup>
+                              </Col>
+                              <Col xs="6">
+                                <FormGroup>
+                                    <Input type="number" onChange={this.onChange} value={this.state.issued}
+                                     name="issued" placeholder="Issued"/>
+                                </FormGroup>
+                              </Col>
                             </FormGroup>
                             <FormGroup row className="my-0">
                               <Col xs="6">
@@ -56,12 +91,12 @@ class NewBin extends Component{
                               </Col>
                               <Col xs="6">
                                 <FormGroup>
-                                    <Input type="number" onChange={this.onChange} value={this.state.issued}
-                                     name="issued" placeholder="Issued" required/>
+                                    <Input type="number" onChange={this.onChange} value={this.state.remark}
+                                     name="remark" placeholder="Remark"/>
                                 </FormGroup>
                               </Col>
                             </FormGroup>
-                                 <Button onClick={this.handleSubmit}> Register </Button>
+                            <Button onClick={this.handleSubmit}> Register </Button>
                         </CardBody>
                     </Card>
             </Col>
