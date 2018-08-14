@@ -143,7 +143,7 @@ class PatientTypes extends Component {
                    <tr>
                        <th scope="col">Patient Name</th>
                        <th scope="col">Description</th>
-                       <th scope="col">Discount</th>
+                       <th scope="col">Discount %</th>
                        <th scope="col">Is Free</th>
                        <th scope="col">Sponsored By</th>
                        <th scope="col">Credit</th>
@@ -188,9 +188,9 @@ class PatientTypes extends Component {
                     </FormGroup>
 
                     <FormGroup>
-                        <Label htmlFor="discount">Discount</Label>
+                        <Label htmlFor="discount">Discount %</Label>
                       <Input type="text" onChange={this.onChange} value={this.state.discount} 
-                        name="discount" placeholder="Discount" required/>
+                        name="discount" placeholder="Discount %" required/>
                     </FormGroup>
 
 

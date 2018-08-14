@@ -3,7 +3,18 @@ import { Col, Card, CardBody, CardHeader, FormGroup, Input, Label, Button} from 
 import {AvField, AvForm, AvGroup} from "availity-reactstrap-validation";
 import Api  from '../../services/api';
 import '../../../node_modules/antd/dist/antd.css';
+
+import './react-tag.css';
 import {Switch} from 'antd';
+
+import { WithContext as ReactTags } from 'react-tag-input';
+
+const KeyCodes = {
+  comma: 188,
+  enter: 13,
+};
+
+const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
 class AddDiagnostic extends Component {
 
@@ -16,26 +27,70 @@ class AddDiagnostic extends Component {
        discoveredBy: "",
        caution: "",
         Diagnostic: [],
-        loading:false
+        loading:false,
+        tags: [],
+        suggestions: [
+          { id: 'Disiness', text: 'Disiness' },
+          { id: 'Fever', text: 'Fever' },
+          { id: 'Htemp', text: 'High Temprature' },
+        ]
     }
+    
+    this.handleDelete = this.handleDelete.bind(this);
+    this.handleAddition = this.handleAddition.bind(this);
+    this.handleDrag = this.handleDrag.bind(this);
+
   }
 
+  handleDelete(i) {
+        const { tags } = this.state;
+        this.setState({
+         tags: tags.filter((tag, index) => index !== i),
+        });
+    }
+ 
+    handleAddition(tag) {
+        this.setState(state => ({ tags: [...state.tags, tag] }));
+    }
+ 
+    handleDrag(tag, currPos, newPos) {
+        const tags = [...this.state.tags];
+        const newTags = tags.slice();
+ 
+        newTags.splice(currPos, 1);
+        newTags.splice(newPos, 0, tag);
+ 
+        // re-render
+        this.setState({ tags: newTags });
+    }
   onChange = (event) => {
     const name = event.target.name;
     this.setState({ [name] : event.target.value });
+  };
+
+  onTagChange() {
+    var tags = ""
+    for (let index = 0; index < this.state.tags.length; index++) {
+      tags=tags+""+this.state.tags[index].text+",";
+    }
+    tags = tags.substring(0, tags.length - 1);
+    return tags
   };
 
   handleInvalidSubmit(event, errors, values) {
     this.setState({errors, values});
   }
   handleValidSubmit(event, values) {
+      var symptom = this.onTagChange();
+
       const DiagnosticData = {
         name: this.state.name,
-        symptom: this.state.symptom.split(','),
+        symptom: symptom.split(','),
         medicine: this.state.medicine.split(','),
         discoveredBy: this.state.discoveredBy,
         caution: this.state.caution
       }
+      console.log(DiagnosticData);
       
     Api.create('Diagnostics', DiagnosticData, null)
     .then((response) =>{
@@ -48,8 +103,8 @@ class AddDiagnostic extends Component {
     });
   }
   render(){
+    const { tags, suggestions } = this.state;
     return (
-
       <div>
         <Col md={{ size: 8, offset: 2 }}>
           <Card>
@@ -71,21 +126,27 @@ class AddDiagnostic extends Component {
                                     name="discoveredBy" placeholder="discovered By" required/>
                 </FormGroup>
                 <FormGroup>
-                  <Label htmlFor="symptom">Symptom</Label>
-                  <Input type="textarea" onChange={this.onChange} value={this.state.symptom} name="symptom" rows="4"
-                  placeholder="Symptom"
-                  />
+                  <Label htmlFor="symptom">Symptoms</Label>
+                  <ReactTags 
+                    inline
+                    tags={tags}
+                    suggestions={suggestions}
+                    handleDelete={this.handleDelete}
+                    handleAddition={this.handleAddition}
+                    handleDrag={this.handleDrag}
+                    delimiters={delimiters} />
+                  
                 </FormGroup>
                 <FormGroup>
-                  <Label htmlFor="Medicen">Medicen</Label>
+                  <Label htmlFor="Medicen">Medicens</Label>
                   <Input type="textarea" onChange={this.onChange}value={this.state.medicine} name="medicine" rows="4"
-                  placeholder = "Medicen"
+                  placeholder = "Medicens"
                   />
                 </FormGroup>
                 <FormGroup>
-                  <Label htmlFor="caution">Caution</Label>
+                  <Label htmlFor="caution">Cautions</Label>
                   <Input type="textarea" name="caution" onChange={this.onChange} id="description" rows="4"
-                              placeholder="caution" value={this.state.caution} 
+                              placeholder="cautions" value={this.state.caution} 
                               />
                 </FormGroup>
                 <FormGroup>

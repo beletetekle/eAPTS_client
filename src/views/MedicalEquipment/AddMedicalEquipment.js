@@ -65,9 +65,9 @@ class AddMedicalEquipment extends Component {
                                     name="code" placeholder="Code" required/>
                 </FormGroup>
                 <FormGroup>
-                  <Label htmlFor="specification">Specification</Label>
-                  <Input type="text" onChange={this.onChange} value={this.state.specification} 
-                                    name="specification" placeholder="Specification" required/>
+                  <Label htmlFor="specification">Specifications</Label>
+                  <Input type="textarea" onChange={this.onChange} value={this.state.specification} rows="5"
+                                    name="specifications" placeholder="Specification" required/>
                 </FormGroup>
                 
                 <FormGroup>

@@ -161,9 +161,9 @@ class MedicalEquipments extends Component {
                     </FormGroup>
 
                     <FormGroup>
-                        <Label htmlFor="specification">Specificaton</Label>
-                      <Input type="text" onChange={this.onChange} value={this.state.specification} 
-                        name="specification" placeholder="Specification" required/>
+                        <Label htmlFor="specification">Specificatons</Label>
+                      <Input type="textarea" onChange={this.onChange} value={this.state.specification} rows="3"
+                        name="specification" placeholder="Specifications" required/>
                     </FormGroup>
                  
                 </FormGroup>
