@@ -9,6 +9,8 @@ import Login from './views/user/Login';
 import Register from './views/user/Register';
 import PrivateRoute from './PrivateRoute';
 
+import style from './App.css';
+
 class App extends Component {
   render() {
     return (

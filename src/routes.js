@@ -231,5 +231,7 @@ const routes = [
   
   { path : '/bincard',exact:true ,name:'Bin Card',component:BinCard},
   { path : '/bincard/new',exact:true ,name:'New BinCard Item',component: NewBinCard},
-] 
+  { path : '/ImporterAndSupplier',exact:true ,name:'ImporterAndSupplier',component:ImporterAndSupplier}
+
+]
 export default routes;

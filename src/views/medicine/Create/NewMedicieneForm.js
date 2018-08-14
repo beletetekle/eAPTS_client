@@ -1,53 +1,87 @@
 import React from 'react';
-import {Button, Card, CardHeader, CardBody, Input, Col, Container, Row, FormGroup    } from 'reactstrap';
+import { Steps, message, Button } from 'antd';
+import { Card, CardHeader, CardBody, Input, Col, Container, Row, FormGroup, TabPane, TabContent, Nav, NavItem, NavLink    } from 'reactstrap';
+import classnames from 'classnames';
+import ProductInfoContainer from './ProductInfoContainer';
+import CounsellingInfo from './CounsellingInfo';
+import BasicMedicineInfo from './BasicMedicineInfo';
 
-const NewMedicieneForm = (props) => {
+const Step = Steps.Step;
+
+class NewMedicieneForm extends React.Component {
+    
+     constructor(props) {
+        super(props);
+
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+          activeTab: '2',
+          current: 0,
+        };
+      }
+
+      toggle(tab) {
+        if (this.state.activeTab !== tab) {
+          this.setState({
+            activeTab: tab
+          });
+        }
+      }
+    next = () => {
+        const current = this.state.current + 1;
+        this.setState({ current });
+    }
+
+    prev = () => {
+        const current = this.state.current - 1;
+        this.setState({ current });
+    }
+
+    render () {
+        
+        const steps = [{
+              title: 'Basic Medicine Information',
+              content: <BasicMedicineInfo medicineDescription={this.props.medicineDescription} medicineCode={this.props.medicineCode} medicineName={this.props.medicineName} onChange={this.props.onChange}/>,
+            }, {
+              title: 'Product Information',
+              content: <ProductInfoContainer productInformation={this.props.productInformation} onChange={this.props.onChange} addMedicine={this.props.addMedicine}/>,
+            }, {
+              title: 'Counselling Information',
+              content: <CounsellingInfo data={this.props.councellingInformation} onChange={this.props.onChange}/>,
+        }];
+
+        const { current } = this.state;
+
+      
     return (
         <div>
-            <Row className="justify-content-center">
-            <Col md="10" xs="12" sm="10">
-                    <Card>
-                        <CardHeader> Add Mediciene </CardHeader>
-                        <CardBody>
-                            <FormGroup>
-                                <Input type="text" onChange={props.onChange} value={props.name} 
-                                name="name" placeholder="Name of the medicine" required/>
-                            </FormGroup>
-                            <FormGroup row className="my-0">
-                              <Col xs="6">
-                                <FormGroup>
-                                    <Input type="text" onChange={props.onChange} value={props.code} 
-                                    name="code" placeholder="Code" required/>
-                                </FormGroup>
-                              </Col>
-                              <Col xs="6">
-                                <FormGroup>
-                                    <Input type="text" onChange={props.onChange} value={props.size}
-                                     name="strength" placeholder="Srength" required/>
-                                </FormGroup>
-                              </Col>
-                            </FormGroup>
-                            <FormGroup row className="my-0">
-                              <Col xs="6">
-                                <FormGroup>
-                                    <Input type="text" onChange={props.onChange} value={props.volume} 
-                                    name="volume" placeholder="Volume" required/>
-                                </FormGroup>
-                              </Col>
-                              <Col xs="6">
-                                <FormGroup>
-                                    <Input type="text" onChange={props.onChange} value={props.size} 
-                                    name="size" placeholder="Size" required/>
-                                </FormGroup>
-                              </Col>
-                            </FormGroup>
-                                 <Button onClick={props.onClick}> Register </Button>
-                        </CardBody>
-                    </Card>
-            </Col>
-          </Row>
+        <Steps current={current}>
+          {steps.map(item => <Step key={item.title} title={item.title} />)}
+        </Steps>
+        <div className="steps-content">{steps[current].content}</div>
+        <div className="steps-action">
+          {
+            current < steps.length - 1
+            && <Button type="primary" onClick={() => this.next()} >Next</Button>
+          }
+          {
+            current === steps.length - 1
+            && <Button type="primary" onClick={this.props.onClick}>Done</Button>
+          }
+          {
+            current > 0
+            && (
+            <Button style={{ marginLeft: 8 }} onClick={() => this.prev()}>
+              Previous
+            </Button>
+            )
+          }
         </div>
+
+        </div>
+
     );
+    }
 };
 
 export default NewMedicieneForm;
