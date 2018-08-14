@@ -44,7 +44,7 @@ class NewMedicieneForm extends React.Component {
               content: <BasicMedicineInfo medicineDescription={this.props.medicineDescription} medicineCode={this.props.medicineCode} medicineName={this.props.medicineName} onChange={this.props.onChange}/>,
             }, {
               title: 'Product Information',
-              content: <ProductInfoContainer productInformation={this.props.productInformation} onChange={this.props.onChange} addMedicine={this.props.addMedicine}/>,
+              content: <ProductInfoContainer productInformation={this.props.productInformation} onChange={this.props.onChange} addMedicine={this.props.addMedicine} addReagents={this.props.addReagents} addConsumableEquipment={this.props.addConsumableEquipment} addSupply={this.props.addSupply}/>,
             }, {
               title: 'Counselling Information',
               content: <CounsellingInfo data={this.props.councellingInformation} onChange={this.props.onChange}/>,

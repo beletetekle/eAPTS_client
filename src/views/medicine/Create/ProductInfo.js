@@ -1,4 +1,5 @@
 import React from 'react';
+import { message } from 'antd';
 import { 
     Row, Col, Card, CardBody, CardHeader, Table, 
     Button, Modal, ModalHeader, ModalBody, ModalFooter,
@@ -24,8 +25,8 @@ class ProductInfo extends React.Component {
       }
 
     addItem = () => {
-        this.props.addItem();
-        this.toggle();
+        let item = this.props.addItem();
+        item ? this.toggle():message.error('Invalid Input!') ;
     }
 
     render () {
@@ -47,14 +48,14 @@ class ProductInfo extends React.Component {
                             </thead>
                         }
                             <tbody>
-                            {this.props.data.map(item => {
-                                <tr>
-                                    <td>#</td>
+                            {this.props.data.map((item, index) => {
+                                return (<tr key={index}>
+                                    <td>{index + 1} </td>
                                     <td>{item.name}</td>
                                     <td>{item.strength}</td>
                                     <td>{item.volume}</td>
                                     <td>{item.size}</td>
-                                </tr>
+                                </tr>);
                             })}
                             </tbody>
                         </Table>
