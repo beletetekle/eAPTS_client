@@ -161,6 +161,23 @@ const SampleSideNav = {
       ]
     },
     {
+      name : "DTP",
+      icon : 'icon-list',
+      url: '/dtp',
+      children: [
+        {
+          name : "List",
+          icon : 'icon-list',
+          url: '/dtp/list',
+        },
+        {
+          name : "Add",
+          icon : 'icon-plus',
+          url: '/dtp/add',
+        },
+      ]
+    },
+    {
       name : "About",
       icon : 'icon-list',
       url : '/about',

@@ -17,6 +17,8 @@ class AddPatientType extends Component {
        sponsoredBy:"",
        credit:"",
        insurance:"",
+       creditstatus:false,
+       insuranceStatus:false,
        createdById:"",
         PatientType: [],
         loading:false
@@ -33,6 +35,14 @@ class AddPatientType extends Component {
     this.setState({isFree: status});
     
   }
+
+  disableInsurance(){
+    this.setState({insuranceStatus:!this.state.insuranceStatus,insurance:""});
+  }
+  disableCredit() {
+    this.setState({creditstatus:!this.state.creditstatus,credit:""});
+  }
+  
 
   handleValidSubmit() {
       const PatientTypeData = {
@@ -74,38 +84,45 @@ class AddPatientType extends Component {
                     required: {value: true, errorMessage: "Please Enter Patient Type name"},
                   }} />
                 </FormGroup>
-                <FormGroup row className="my-0">
-                              <Col xs="4">
-                                <FormGroup>
-                                    <Input type="text" onChange={this.onChange} value={this.state.discount} 
-                                    name="discount" placeholder="Discount" required/>
-                                </FormGroup>
-                              </Col>
-                              <Col xs="4">
-                                <FormGroup>
-                                    <Input type="text" onChange={this.onChange} value={this.state.sponsoredBy} 
-                                    name="sponsoredBy" placeholder="sponsored By" required/>
-                                </FormGroup>
-                              </Col>
-                              <Col xs="4">
-                                is Free &nbsp;&nbsp;&nbsp;<Switch onChange={()=>this.onChecked()} 
-                                    name = "isFree" />
-                              </Col>
+                              
+                <FormGroup>
+                    <Label htmlFor="discount">Discount %</Label>
+                    <Input type="text" onChange={this.onChange} value={this.state.discount} 
+                    name="discount" placeholder="Discount %" required/>
                 </FormGroup>
-                  <FormGroup row className="my-0">
-                              <Col xs="6">
-                                <FormGroup>
-                                    <Input type="text" onChange={this.onChange} value={this.state.credit} 
-                                    name="credit" placeholder="Credit" required/>
-                                </FormGroup>
-                              </Col>
-                              <Col xs="6">
-                                <FormGroup>
-                                    <Input type="text" onChange={this.onChange} value={this.state.insurance} 
-                                    name="insurance" placeholder="Insurance" required/>
-                                </FormGroup>
-                              </Col>
+              
+              
+                <FormGroup>
+                  <Label htmlFor="sponsoredBy">Sponsored By</Label>
+                    <Input type="text" onChange={this.onChange} value={this.state.sponsoredBy} 
+                    name="sponsoredBy" placeholder="sponsored By" required/>
                 </FormGroup>
+              
+              <FormGroup>
+                <Label htmlFor="isFree">is Free</Label>
+                &nbsp;&nbsp;&nbsp;<Switch onChange={()=>this.onChecked()} 
+                    name = "isFree" />
+              </FormGroup>
+                            
+                  
+                      <FormGroup>
+                        <Label htmlFor="credit">Credit &nbsp;&nbsp;&nbsp;<Switch onChange={()=>this.disableCredit()} 
+                            name = "isCredit" /></Label>
+                          <Input type="text" disabled={!this.state.creditstatus} onChange={this.onChange} value={this.state.credit} 
+                          name="credit" placeholder="Credit" required/>
+                      </FormGroup>
+              
+
+                
+                      <FormGroup>
+                        <Label htmlFor="insurance">Insured&nbsp;&nbsp;<Switch onChange={()=>this.disableInsurance()} 
+                            name = "isFree" /></Label>
+                          <Input type="text" disabled={!this.state.insuranceStatus} onChange={this.onChange} value={this.state.insurance} 
+                          name="insurance" placeholder="Insurance" required/>
+                      </FormGroup>
+                    
+
+
                 <FormGroup>
                   <Label htmlFor="description">Description</Label>
                   <Input type="textarea" name="description" onChange={this.onChange} id="description" rows="9" value={this.state.description}

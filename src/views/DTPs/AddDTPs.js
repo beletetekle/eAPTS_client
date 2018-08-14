@@ -5,16 +5,16 @@ import Api  from '../../services/api';
 import '../../../node_modules/antd/dist/antd.css';
 import {Switch} from 'antd';
 
-class AddMedicalEquipment extends Component {
+class AddDTP extends Component {
 
   constructor(props){
     super(props);
      this.state={
-       name:"",
-       code: "",
-       specification: "",
-        MedicalEquipment: [],
-        loading:false
+       title:"",
+       description: "",
+       medicine: "",
+       DTP: [],
+       loading:false
     }
   }
 
@@ -25,16 +25,16 @@ class AddMedicalEquipment extends Component {
 
  
   handleValidSubmit(event, values) {
-      const MedicalEquipmentData = {
-        name: this.state.name,
-        code: this.state.code,
-        specification: this.state.specification
+      const DTPData = {
+        title: this.state.title,
+        description: this.state.description,
+        medicine: this.state.medicine
       }
       
-    Api.create('MedicalEquipments', MedicalEquipmentData, null)
+    Api.create('DTPs', DTPData, null)
     .then((response) =>{
         console.log("success");
-        this.props.history.push('/medical-equipmnet');
+        this.props.history.push('/dtp');
         
     })
     .catch((error) =>{
@@ -48,26 +48,26 @@ class AddMedicalEquipment extends Component {
         <Col md={{ size: 8, offset: 2 }}>
           <Card>
               <CardHeader>
-                <strong>Add Medical Equipment</strong>
+                <strong>Add DTPs</strong>
               </CardHeader>
               <CardBody>
                 <FormGroup>
-                  <Label htmlFor="name">Name</Label>
-                  <Input type="text" onChange={this.onChange} value={this.state.name} name="name" 
-                  placeholder="Enter Medical Equipment name"
+                  <Label htmlFor="name">Title</Label>
+                  <Input type="text" onChange={this.onChange} value={this.state.title} name="title" 
+                  placeholder="Enter DTP title"
                   validate={{
-                    required: {value: true, errorMessage: "Please Medical Equipment name"},
+                    required: {value: true, errorMessage: "Please DTP title"},
                   }} />
                 </FormGroup>
                 <FormGroup>
-                  <Label htmlFor="code">Code</Label>
-                  <Input type="text" onChange={this.onChange} value={this.state.code} 
-                                    name="code" placeholder="Code" required/>
+                  <Label htmlFor="description">Description</Label>
+                  <Input type="text" onChange={this.onChange} value={this.state.description} 
+                                    name="description" placeholder="Description" required/>
                 </FormGroup>
                 <FormGroup>
-                  <Label htmlFor="specification">Specifications</Label>
-                  <Input type="textarea" onChange={this.onChange} value={this.state.specification} rows="5"
-                                    name="specifications" placeholder="Specification" required/>
+                  <Label htmlFor="medicine">Medicine</Label>
+                  <Input type="text" onChange={this.onChange} value={this.state.medicine} 
+                                    name="medicine" placeholder="Medicine" required/>
                 </FormGroup>
                 
                 <FormGroup>
@@ -81,4 +81,4 @@ class AddMedicalEquipment extends Component {
   }
 }
 
-export default AddMedicalEquipment;
+export default AddDTP;

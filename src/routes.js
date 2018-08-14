@@ -163,11 +163,25 @@ const AddMedicalEquipment = Loadable({
   loading: Loading,
 });
 
+<<<<<<< HEAD
+const DTP = Loadable({
+  loader: () =>
+    import ('./views/DTPs/DTPs'),
+  loading: Loading,
+});
+
+const AddDTP = Loadable({
+  loader: () =>
+    import ('./views/DTPs/AddDTPs'),
+  loading: Loading,
+});
+=======
 const Register = Loadable({
   loader: () =>
     import ('./views/user/Register'),
   loading: Loading
 })
+>>>>>>> 86418d8945c890df49def849f410758627b2c8d8
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
@@ -212,8 +226,16 @@ const routes = [
   { path: '/medical-equipmnet', exact: true, name: 'Medical Equipment', component: MedicalEquipment},
   { path: '/medical-equipmnet/list', name: 'Medical Equipment', component: MedicalEquipment},
   { path: '/medical-equipmnet/add', name: 'Add Medical Equipment', component: AddMedicalEquipment},
+<<<<<<< HEAD
+
+  { path: '/dtp', exact: true, name: 'DTP', component: DTP},
+  { path: '/dtp/list', name: 'DTP', component: DTP},
+  { path: '/dtp/add', name: 'Add DTP', component: AddDTP},
+
+=======
   
   { path : '/bincard',exact:true ,name:'Bin Card',component:BinCard},
   { path : '/bincard/new',exact:true ,name:'New BinCard Item',component: NewBinCard},
+>>>>>>> 86418d8945c890df49def849f410758627b2c8d8
 ] 
 export default routes;

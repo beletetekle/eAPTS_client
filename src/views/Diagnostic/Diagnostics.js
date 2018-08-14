@@ -82,8 +82,8 @@ class Diagnostics extends Component {
   onEditSave = (id) => {
       const DiagnosticData = {
         name: this.state.name,
-        symptom: this.state.symptom.split(','),
-        medicine: this.state.medicine.split(','),
+        symptom: this.state.symptom.toString().split(','),
+        medicine: this.state.medicine.toString().split(','),
         discoveredBy: this.state.discoveredBy,
         caution: this.state.caution
       }
@@ -162,27 +162,27 @@ class Diagnostics extends Component {
                     </FormGroup>
                   
                     <FormGroup>
-                        <Label htmlFor="symptom">Symptom</Label>
-                      <Input type="text" onChange={this.onChange} value={this.state.symptom} 
-                        name="symptom" placeholder="Symptom" required/>
-                    </FormGroup>
-
-                    <FormGroup>
-                        <Label htmlFor="medicine">Medicen</Label>
-                      <Input type="text" onChange={this.onChange} value={this.state.medicine} 
-                        name="medicine" placeholder="Medicine" required/>
-                    </FormGroup>
-
-                    <FormGroup>
                         <Label htmlFor="discoveredBy">Discovered By</Label>
                       <Input type="text" onChange={this.onChange} value={this.state.discoveredBy} 
                         name="discoveredBy" placeholder="Discovered By" required/>
                     </FormGroup>
+                    
+                    <FormGroup>
+                        <Label htmlFor="symptom">Symptoms</Label>
+                      <Input type="textarea" onChange={this.onChange} value={this.state.symptom} rows="3"
+                        name="symptom" placeholder="Symptoms" required/>
+                    </FormGroup>
 
                     <FormGroup>
-                        <Label htmlFor="caution">Caution</Label>
-                      <Input type="text" onChange={this.onChange} value={this.state.caution} 
-                        name="caution" placeholder="Caution" required/>
+                        <Label htmlFor="medicine">Medicens</Label>
+                      <Input type="textarea" onChange={this.onChange} value={this.state.medicine} rows="3"
+                        name="medicine" placeholder="Medicines" required/>
+                    </FormGroup>
+
+                    <FormGroup>
+                        <Label htmlFor="caution">Cautions</Label>
+                      <Input type="textarea" onChange={this.onChange} value={this.state.caution} rows="3"
+                        name="caution" placeholder="Cautions" required/>
                     </FormGroup>
                  
                 </FormGroup>
