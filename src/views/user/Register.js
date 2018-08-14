@@ -56,9 +56,6 @@ class Register extends Component {
             values.file = this.state.files;
             this.fileUpload(this.state.values['file']);
         } else {
-            values.emailVerified = true;
-            values.password = 'passme'; // TODO: THIS HAS TO BE ENCRYPTED
-            values.username = values.email.substring(0, values.email.indexOf('@')) + Math.floor(Math.random() * 10);
             UserService.register(values)
                 .then(response => {
                     console.log(response);
@@ -152,8 +149,47 @@ class Register extends Component {
                                                     },
 
                                                 }}
-                                            >
+                                            />
+                                            <AvField
+                                                bssize="sm"
+                                                name="username"
+                                                type="text"
+                                                label="Username"
+                                                placeholder="Username"
+                                                validate={{
+                                                    pattern: {value: '^[A-Za-z0-9]+$', errorMessage: 'Your username must be composed only with letter and numbers'},
+                                                    minLength: {value: 6, errorMessage: 'Your username must be between 6 and 16 characters'},
+                                                    maxLength: {value: 16, errorMessage: 'Your username must be between 6 and 16 characters'},
+                                                }}
+                                            />
+                                            <AvField
+                                                bssize="sm"
+                                                name="first_name"
+                                                type="text"
+                                                label="First Name"
+                                                placeholder="First Name"
+                                           / >
+                                            <AvField
+                                                bssize="sm"
+                                                name="last_name"
+                                                type="text"
+                                                label="Last Name"
+                                                placeholder="Last Name"
+                                            />
+                                            <AvField
+                                                bssize="sm"
+                                                name="password"
+                                                type="password"
+                                                label="Password"
+                                                placeholder="password"
+                                                validate={{
+                                                    required: {
+                                                        value: true,
+                                                        errorMessage: "Please enter password!"
+                                                    },
 
+                                                }}
+                                            >
                                             </AvField>
 
                                             <FormGroup>
