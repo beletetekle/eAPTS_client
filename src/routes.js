@@ -106,6 +106,12 @@ const HealthFacility = Loadable({
   loading: Loading
 })
 
+const AddHF = Loadable({
+  loader: () =>
+    import ('./views/HF/AddHF'),
+  loading: Loading
+})
+
 const ImporterAndSupplier = Loadable({
   loader: () =>
     import ('./views/ImporterAndSupplier/ImporterAndSupplieres'),
@@ -190,6 +196,7 @@ const routes = [
   { path : '/medicine',exact:true ,name:'Medicines',component:Medicine},
   { path : '/new-medicine',exact:true ,name:'Medicines',component:AddMedicine},
   { path : '/HF',exact:true ,name:'HealthFacility',component:HealthFacility},
+  { path : '/HF/new',exact:true ,name:'Add Health Facility',component:AddHF},
   { path : '/ImporterAndSupplier',exact:true ,name:'ImporterAndSupplier',component:ImporterAndSupplier},
   { path : '/Patients',exact:true ,name:'Patients',component:Patients},
   { path : '/Patients/add',exact:true ,name:'New Patient',component:AddPatient},

@@ -12,7 +12,6 @@ class Bin extends Component{
         <td> 
             {this.props.name}
         </td>
-
         <td>{this.props.received}</td>
         <td>{this.props.issued}</td>
         <td>{this.props.batchno}</td>

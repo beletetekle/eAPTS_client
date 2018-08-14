@@ -12,13 +12,6 @@ class HealthFacilities extends Component{
     constructor(props){
         super(props);
          this.state={
-            name:"",
-            description: "",
-            address: "",
-            phone: "",
-            po_box: "",
-            email: "",
-            web: "",
             HealthFacilities: [],
             loading:false
         }
@@ -34,30 +27,8 @@ class HealthFacilities extends Component{
         })
     }
 
-    onChange = (event) => {
-        const name = event.target.name;
-        this.setState({ [name] : event.target.value });
-    };
-
-    handleSubmit=() =>{
-        const HealthFacilityData = {
-            name:this.state.name,
-            description: this.state.description,
-            address: this.state.address,
-            phone: this.state.phone,
-            po_box: this.state.po_box,
-            email: this.state.email,
-            web: this.state.web,
-        }
-        Api.create('HealthFacilities', HealthFacilityData, null)
-        .then((response) =>{
-            this.props.history.push('/HF');
-            // todo call the alert
-        })
-        .catch((error) =>{
-            console.log(error);
-        });
-
+    onAddBinForm=() =>{
+        this.props.history.push('/HF/new');
     }
 
     render(){
@@ -87,6 +58,9 @@ class HealthFacilities extends Component{
                      <Card>
                      <CardHeader>
                         <i className="fa fa-align-justify"/> Health Facility List
+                        <div className="float-right">
+                            <Icon onClick={this.onAddBinForm} type="plus-circle-o" style={{fontSize: 36,float:"right"}} />
+                        </div>
                     </CardHeader>
                                 <CardBody>
                                     <Table responsive hover>
@@ -110,61 +84,7 @@ class HealthFacilities extends Component{
                                 </CardBody>
                         </Card>
                     </Col>
-
-                    <Col xs="12" md="12">
-                            
-                     <Card>
-                     <CardHeader>
-                        <i className="fa fa-plus"/> Add Health Facility
-                    </CardHeader>
-                                <CardBody>
-                                    < AddHFForm 
-                                        onClick={this.handleSubmit}
-                                        onChange={this.onChange}
-                                        name={this.state.name}
-                                        description={this.state.description}
-                                        address={this.state.address}
-                                        phone={this.state.phone}
-                                        po_box={this.state.po_box}
-                                        email={this.state.email}
-                                        web={this.state.web}/> 
-                                </CardBody>
-                        </Card>
-                    </Col>
-
-                    <Col xs="12" md="12">
-
-                    <CardHeader>
-                        <i className="fa fa-user"/> Assign Health Facility Admin
-                     </CardHeader>
-                    <br />
-                        <Row className="justify-content-center">
-                            <Col md="10" xs="12" sm="10">
-                                <Card>
-                                <CardBody>
-                                    <Table responsive hover>
-                                        <FormGroup row className="my-0">
-                                            <Col xs="8">
-                                                <FormGroup>
-                                                    <Input type="text"
-                                                    name="adminEmail" placeholder="Enter Admin Email" required/>
-                                                </FormGroup>
-                                            </Col>
-                                            <Col xs="4">
-                                                <FormGroup>
-                                                    <Button> Send Email </Button>
-                                                </FormGroup>
-                                            </Col>
-                                        </FormGroup>
-                                    </Table>
-                                </CardBody>
-                                </Card>
-                            </Col>
-                        </Row>
-                    
-                    </Col>
                 </Row>
-               
         </div>
         )
     }
