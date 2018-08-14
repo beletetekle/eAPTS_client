@@ -38,8 +38,7 @@ class Regions extends Component {
                 id={region.id}
                 name={region.name}
                 description={region.description}
-                />
-
+            />
         )
     });
     return (

@@ -33,7 +33,6 @@ class AddRegion extends Component {
   }
   render(){
     return (
-
       <div>
         <Col md={{ size: 8, offset: 2 }}>
           <Card>
