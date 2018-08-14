@@ -4,22 +4,21 @@ import Api  from '../../services/api';
 import {Button} from 'antd';
 import '../../../node_modules/antd/dist/antd.css';
 import {Icon} from 'antd';
-import SingleDiagnostic from './Diagnostic';
+import SingleDTP from './DTP';
 import LoadingSpinner from "../../containers/common/LoadingSpinner";
 
 import { message } from 'antd';
 
 
-class Diagnostics extends Component {
+class DTPs extends Component {
       constructor(props){
         super(props);
         this.state={
-            name:"",
-            symptom: "",
-            medicine:"",
-            discoveredBy: "",
-            caution: "",
-            Diagnostic: [],
+            id:"",
+            title:"",
+            description: "",
+            medicine: "",
+            DTPs: [],
             loading:false,
             modal: false,
         }
@@ -37,9 +36,9 @@ class Diagnostics extends Component {
   }
 
   featchdata(){
-    Api.find('Diagnostics', null, null)
+    Api.find('DTPs', null, null)
       .then((response) =>{
-          this.setState({Diagnostic:response.data})
+          this.setState({DTPs:response.data})
       })
       .catch((error) =>{
           console.log(error);
@@ -52,7 +51,7 @@ class Diagnostics extends Component {
     };
 
   onDelete = (id) => {
-    Api.destroy("Diagnostics", id)
+    Api.destroy("DTPs", id)
       .then((response) => {
           message.success("succesfully deleted!");
           this.featchdata();
@@ -65,14 +64,12 @@ class Diagnostics extends Component {
 
   }
 
-  onEdit = (id,name,symptom,medicine,discoveredBy,caution) => {
+  onEdit = (id, title, description, medicine) => {
       this.setState({
           id:id,
-          name:name,
-          symptom: symptom,
-          medicine: medicine,
-          discoveredBy: discoveredBy,
-          caution: caution,
+          title:title,
+          description: description,
+          medicine:medicine
         });
         
       this.toggle();
@@ -80,14 +77,12 @@ class Diagnostics extends Component {
   }
 
   onEditSave = (id) => {
-      const DiagnosticData = {
-        name: this.state.name,
-        symptom: this.state.symptom.toString().split(','),
-        medicine: this.state.medicine.toString().split(','),
-        discoveredBy: this.state.discoveredBy,
-        caution: this.state.caution
+      const DTPData = {
+          title: this.state.title,
+          description: this.state.description,
+          medicine: this.state.medicine
       }
-      Api.update('Diagnostics', this.state.id, DiagnosticData)
+      Api.update('DTPs', this.state.id, DTPData)
         .then((response) => {
             message.success('successfully modified!');
         this.featchdata();
@@ -102,12 +97,12 @@ class Diagnostics extends Component {
   }
 
   render(){
-    const DiagnosticList = this.state.Diagnostic;
+    const DTPList = this.state.DTPs;
     const loading=this.state.loading;
-    const listDiagnostic = DiagnosticList.map((diagnistic, index) => {
+    const listDTP = DTPList.map((dtp, index) => {
         return(
-            <SingleDiagnostic  key={index}
-                diagnostic={diagnistic}
+            <SingleDTP  key={index}
+                dtp={dtp}
                 onEdit={this.onEdit}
                 onDelete={this.onDelete}
                 />
@@ -118,24 +113,22 @@ class Diagnostics extends Component {
       <div >
        <Card>
           <CardHeader>
-                Diagnistic
+                DTPs
           </CardHeader>
           <CardBody>
           <Table>
                <thead>
                    <tr>
-                       <th scope="col">Diagnostic Name</th>
-                       <th scope="col">Symptom</th>
+                       <th scope="col">DTP Title</th>
+                       <th scope="col">Description</th>
                        <th scope="col">Medicine</th>
-                       <th scope="col">DiscoveredBy</th>
-                       <th scope="col">Caution</th>
                        <th scope="col">Action</th>
                    </tr>
                </thead>
                <tbody>
                    {loading ? <tr>
                    <td><LoadingSpinner/></td>
-                   </tr> : listDiagnostic}
+                   </tr> : listDTP}
                </tbody>
            </Table>
             <Pagination>
@@ -152,37 +145,25 @@ class Diagnostics extends Component {
       </Card>
 
       <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className}>
-              <ModalHeader toggle={this.toggle}>Edit Diagnostic</ModalHeader>
+              <ModalHeader toggle={this.toggle}>Edit DTP</ModalHeader>
               <ModalBody>
                 <FormGroup>
-                    <Label htmlFor="name">Name</Label>
                     <FormGroup>
-                      <Input type="text" onChange={this.onChange} value={this.state.name} 
-                        name="name" placeholder="Name" required/>
+                        <Label htmlFor="title">Title</Label>
+                      <Input type="text" onChange={this.onChange} value={this.state.title} 
+                        name="title" placeholder="Title" required/>
                     </FormGroup>
                   
                     <FormGroup>
-                        <Label htmlFor="discoveredBy">Discovered By</Label>
-                      <Input type="text" onChange={this.onChange} value={this.state.discoveredBy} 
-                        name="discoveredBy" placeholder="Discovered By" required/>
-                    </FormGroup>
-                    
-                    <FormGroup>
-                        <Label htmlFor="symptom">Symptoms</Label>
-                      <Input type="textarea" onChange={this.onChange} value={this.state.symptom} rows="3"
-                        name="symptom" placeholder="Symptoms" required/>
+                        <Label htmlFor="descreption">Description</Label>
+                      <Input type="text" onChange={this.onChange} value={this.state.description} 
+                        name="description" placeholder="Description" required/>
                     </FormGroup>
 
                     <FormGroup>
-                        <Label htmlFor="medicine">Medicens</Label>
-                      <Input type="textarea" onChange={this.onChange} value={this.state.medicine} rows="3"
-                        name="medicine" placeholder="Medicines" required/>
-                    </FormGroup>
-
-                    <FormGroup>
-                        <Label htmlFor="caution">Cautions</Label>
-                      <Input type="textarea" onChange={this.onChange} value={this.state.caution} rows="3"
-                        name="caution" placeholder="Cautions" required/>
+                        <Label htmlFor="medicine">Medicine</Label>
+                      <Input type="text" onChange={this.onChange} value={this.state.medicine} 
+                        name="medicine" placeholder="Medicine" required/>
                     </FormGroup>
                  
                 </FormGroup>
@@ -197,4 +178,4 @@ class Diagnostics extends Component {
   }
 }
 
-export default Diagnostics;
+export default DTPs;

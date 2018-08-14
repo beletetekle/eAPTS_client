@@ -149,6 +149,18 @@ const AddMedicalEquipment = Loadable({
   loading: Loading,
 });
 
+const DTP = Loadable({
+  loader: () =>
+    import ('./views/DTPs/DTPs'),
+  loading: Loading,
+});
+
+const AddDTP = Loadable({
+  loader: () =>
+    import ('./views/DTPs/AddDTPs'),
+  loading: Loading,
+});
+
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/home', exact: true, name: 'Home', component: Home},
@@ -191,6 +203,10 @@ const routes = [
   { path: '/medical-equipmnet', exact: true, name: 'Medical Equipment', component: MedicalEquipment},
   { path: '/medical-equipmnet/list', name: 'Medical Equipment', component: MedicalEquipment},
   { path: '/medical-equipmnet/add', name: 'Add Medical Equipment', component: AddMedicalEquipment},
+
+  { path: '/dtp', exact: true, name: 'DTP', component: DTP},
+  { path: '/dtp/list', name: 'DTP', component: DTP},
+  { path: '/dtp/add', name: 'Add DTP', component: AddDTP},
 
 ] 
 export default routes;

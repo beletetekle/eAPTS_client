@@ -90,7 +90,6 @@ class AddDiagnostic extends Component {
         discoveredBy: this.state.discoveredBy,
         caution: this.state.caution
       }
-      console.log(DiagnosticData);
       
     Api.create('Diagnostics', DiagnosticData, null)
     .then((response) =>{
