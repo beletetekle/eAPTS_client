@@ -93,7 +93,7 @@ const AddMedicine=Loadable({
 
 const Region = Loadable({
   loader: () =>
-    import ('./views/Region/Regions'),
+    import ('./views/address/regions/Regions'),
   loading: Loading
 })
 
