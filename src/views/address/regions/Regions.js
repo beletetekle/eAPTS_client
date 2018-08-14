@@ -10,7 +10,10 @@ import {Icon} from 'antd';
 import SingleRegion from './Region';
 import LoadingSpinner from "../../../containers/common/LoadingSpinner";
 import {AvField, AvForm, AvGroup} from "availity-reactstrap-validation";
+import '../../../../node_modules/antd/dist/antd.css';
+import {Switch} from 'antd';
 
+import { message } from 'antd';
 
 class Regions extends Component {
       constructor(props){
@@ -77,8 +80,8 @@ class Regions extends Component {
     // todo call the delete method for the user
     Api.destroy('Regions',this.state.currentRegionId,null)
     .then((response) =>{
-        this.messageSuc('Region  Deleted  Successfully !');
-         this.setState({deleteModalVisible: false});
+        this.setState({deleteModalVisible: false});
+        message.success('successfully modified!');
          this.getAllRegion();
     })
     .catch((error) =>{
@@ -90,7 +93,18 @@ class Regions extends Component {
   updateRegion = (event,value) => {
     if(value){
     // todo call the delete method for the user
+        Api.update('Regions', this.state.currentRegionId, value)
+        .then((response) => {
+            this.setState({editModalVisible: false});
+            message.success('successfully modified!');
+        this.getAllRegion();
+        })
+        .catch((error) => {
+            console.log(error);
+            message.error('Oops! Please check your form again.')
+        });
 
+        console.log("The edit  values are ",value)
     }else {
       this.setState({editModalVisible: false});
     }
@@ -187,7 +201,7 @@ class Regions extends Component {
                         </Col>
                         <Col xs="12" sm="8">
                         <AvGroup>
-                            <AvField  type="textarea" name="description"  label="Description" rows="9" required />
+                            <AvField  type="textarea" name="description"  label="Description" rows="3" required />
                         </AvGroup>
                         </Col>
 

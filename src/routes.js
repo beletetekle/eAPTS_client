@@ -178,15 +178,12 @@ const routes = [
   { path : '/ImporterAndSupplier',exact:true ,name:'ImporterAndSupplier',component:ImporterAndSupplier},
   { path : '/Patients',exact:true ,name:'Patients',component:Patients},
   { path : '/Patients/add',exact:true ,name:'New Patient',component:AddPatient},
-
   { path: '/patient-type', exact: true, name: 'Patient Type', component: PatientType},
   { path: '/patient-type/list', name: 'Patient Type', component: PatientType},
   { path: '/patient-type/add', name: 'Add Patient Type', component: AddPatientType},
-
   { path: '/diagnostic', exact: true, name: 'Diagnostic', component: Diagnostic},
   { path: '/diagnostic/list', name: 'Diagnostic', component: Diagnostic},
   { path: '/diagnostic/add', name: 'Add Diagnostic', component: AddDiagnostic},
-
   { path: '/medical-equipmnet', exact: true, name: 'Medical Equipment', component: MedicalEquipment},
   { path: '/medical-equipmnet/list', name: 'Medical Equipment', component: MedicalEquipment},
   { path: '/medical-equipmnet/add', name: 'Add Medical Equipment', component: AddMedicalEquipment},
