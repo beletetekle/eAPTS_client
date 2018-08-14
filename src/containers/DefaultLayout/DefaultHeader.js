@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink} from 'reactstrap';
 import PropTypes from 'prop-types';
 import {AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler} from '@coreui/react';
+import User from '../../services/users.service';
+import maleDefaultImage from '../../assets/img/male.png';
 
 const propTypes = {
   children: PropTypes.node,
@@ -9,9 +11,22 @@ const propTypes = {
 
 const defaultProps = {};
 
-const DefaultHeader  = (props) => {
-
-    return (
+class DefaultHeader extends Component {
+  constructor(props){
+      super(props);
+      this.state = {
+          image : null,
+          role: null,
+          sex:""
+      }
+  }
+  
+      onLogoutHandle=()=>{
+          User.logout();
+          window.location = "#/";
+      };
+  render(){
+  return (
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
         <AppNavbarBrand
@@ -49,11 +64,11 @@ const DefaultHeader  = (props) => {
         <Nav className="ml-auto" navbar>
           <AppHeaderDropdown direction="down">
             <DropdownToggle nav>
-              Test
+              <img src={maleDefaultImage} style={{width:"35px"}}/>
             </DropdownToggle>
             <DropdownMenu right style={{ right: 'auto' }}>
-              <DropdownItem><i className="fa fa-lock"/>
-                  Test
+              <DropdownItem onClick={this.onLogoutHandle}><i className="fa fa-lock"/>
+                  Log Out
               </DropdownItem>
             </DropdownMenu>
           </AppHeaderDropdown>
@@ -61,6 +76,7 @@ const DefaultHeader  = (props) => {
         </Nav>
        </React.Fragment>
     );
+  }
 }
 
 DefaultHeader.propTypes = propTypes;

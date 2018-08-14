@@ -203,7 +203,7 @@ class User {
     static logout = () => {
         ClientSession.getAccessToken(function (isLoggedIn, authData) {
             if (isLoggedIn && authData != null) {
-                Api.create('users/logout', {})
+                Api.create('InternalUsers/logout', {})
                     .then(response => {
                         ClientSession.removeAuth(err => {
                             err ? console.log(err) : ''
