@@ -6,7 +6,7 @@ const RegisterForm = (props) => {
         <div>
             <Container>
                 <Card>
-                    <CardHeader> HMIS </CardHeader>
+                    <CardHeader> eAPTS </CardHeader>
                     <CardBody>
                         <FormGroup>
                             <Input type="text" onChange={props.onChange} value={props.username} name="username" placeholder="UserName" required/>

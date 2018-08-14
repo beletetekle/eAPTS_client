@@ -91,7 +91,15 @@ const AddMedicine=Loadable({
   loading:Loading
 })
 
+const BinCard = Loadable({
+  loader:() =>import('./views/card/BinCard'),
+  loading:Loading
+})
 
+const NewBinCard = Loadable({
+  loader:() =>import('./views/card/NewBin'),
+  loading:Loading
+})
 const HealthFacility = Loadable({
   loader: () =>
     import ('./views/HF/HealthFacilities'),
@@ -149,6 +157,7 @@ const AddMedicalEquipment = Loadable({
   loading: Loading,
 });
 
+<<<<<<< HEAD
 const DTP = Loadable({
   loader: () =>
     import ('./views/DTPs/DTPs'),
@@ -160,10 +169,18 @@ const AddDTP = Loadable({
     import ('./views/DTPs/AddDTPs'),
   loading: Loading,
 });
+=======
+const Register = Loadable({
+  loader: () =>
+    import ('./views/user/Register'),
+  loading: Loading
+})
+>>>>>>> 86418d8945c890df49def849f410758627b2c8d8
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
 const routes = [
   { path: '/home', exact: true, name: 'Home', component: Home},
+  { path: '/register', exact: true, name: 'Register', component: Register},
   { path: '/about', exact: true, name: 'About', component: About},
   { path: '/regions', exact: true, name: 'Regions', component: Regions},
   { path: '/regions/list', name: 'Regions', component: Regions},
@@ -186,27 +203,32 @@ const routes = [
   { path: '/departments/add', name: 'Add Department', component: AddDepartment},
   { path : '/medicine',exact:true ,name:'Medicines',component:Medicine},
   { path : '/new-medicine',exact:true ,name:'Medicines',component:AddMedicine},
-
   { path : '/HF',exact:true ,name:'HealthFacility',component:HealthFacility},
   { path : '/ImporterAndSupplier',exact:true ,name:'ImporterAndSupplier',component:ImporterAndSupplier},
   { path : '/Patients',exact:true ,name:'Patients',component:Patients},
   { path : '/Patients/add',exact:true ,name:'New Patient',component:AddPatient},
-
+  
   { path: '/patient-type', exact: true, name: 'Patient Type', component: PatientType},
   { path: '/patient-type/list', name: 'Patient Type', component: PatientType},
   { path: '/patient-type/add', name: 'Add Patient Type', component: AddPatientType},
-
+  
   { path: '/diagnostic', exact: true, name: 'Diagnostic', component: Diagnostic},
   { path: '/diagnostic/list', name: 'Diagnostic', component: Diagnostic},
   { path: '/diagnostic/add', name: 'Add Diagnostic', component: AddDiagnostic},
-
+  
   { path: '/medical-equipmnet', exact: true, name: 'Medical Equipment', component: MedicalEquipment},
   { path: '/medical-equipmnet/list', name: 'Medical Equipment', component: MedicalEquipment},
   { path: '/medical-equipmnet/add', name: 'Add Medical Equipment', component: AddMedicalEquipment},
+<<<<<<< HEAD
 
   { path: '/dtp', exact: true, name: 'DTP', component: DTP},
   { path: '/dtp/list', name: 'DTP', component: DTP},
   { path: '/dtp/add', name: 'Add DTP', component: AddDTP},
 
+=======
+  
+  { path : '/bincard',exact:true ,name:'Bin Card',component:BinCard},
+  { path : '/bincard/new',exact:true ,name:'New BinCard Item',component: NewBinCard},
+>>>>>>> 86418d8945c890df49def849f410758627b2c8d8
 ] 
 export default routes;

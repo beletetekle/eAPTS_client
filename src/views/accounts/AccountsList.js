@@ -7,17 +7,16 @@ const AccountRow = (account, idx) => {
     return (
         <tr className="" key={idx}>
             <td>
-                <Link to={`/accounts/${account}`}>{account}</Link>
+                <Link to={`/accounts/`}>{account.first_name+" "+account.last_name}</Link>
             </td>
+            <td> {account.email}</td>
+            <td> {account.username}</td>
+            <td> {account.role}</td>
             <td> </td>
             <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
-            <td> </td>
+            <td>{account.emailVerified? "Active": "InActive"} </td>
             <td>
-                <Button onClick={() => {this.onClick(account)}}>Delete</Button>
+                <Button onClick={() => {this.onClick(account.id)}}>Delete</Button>
             </td>
         </tr>
     );
@@ -34,24 +33,28 @@ const AccountsList = ({accounts, onClick}) => {
                 </Link>
             </CardHeader>
             <CardBody>
+                {accounts.length?
                 <Table responsive striped>
                     <thead>
                         <tr>
-                            <th> Account Name </th>
-                            <th> Type </th>
-                            <th> User ID </th>
-                            <th> Region ID</th>
-                            <th> Zone</th>
+                            <th> Name </th>
+                            <th> Email </th>
+                            <th> Username </th>
+                            <th> Role</th>
                             <th> Last Access</th>
                             <th> Activity</th>
                             <th> Status</th>
-                            <th> ... </th>
+                            <th> </th>
                         </tr>
                     </thead>
                     <tbody>
-                        { accounts.map(AccountRow, this) }
+                        {accounts.map(AccountRow, this) }
                     </tbody>
-                </Table>          
+                </Table>
+                : <div style={{display: "flex", justifyContent: "center", alignItems: "center"}}>
+                    <p> There are no users you created! </p>
+                  </div>
+                }          
             </CardBody>
         </Card>
     );

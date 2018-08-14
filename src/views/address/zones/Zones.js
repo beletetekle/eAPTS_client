@@ -1,10 +1,44 @@
 import React, {Component} from 'react';
 import { Badge, Card, CardBody, CardHeader, Col, Pagination, PaginationItem, PaginationLink, Row, Table } from 'reactstrap';
+import Api  from '../../../services/api';
+import '../../../../node_modules/antd/dist/antd.css';
+import {Icon} from 'antd';
+import SingleZone from './Zone';
+import LoadingSpinner from "../../../containers/common/LoadingSpinner";
 
 class Zones extends Component {
+  constructor(props){
+    super(props);
+    this.state={
+        region:"",
+        zones:[],
+        loading:false
+    }
+  }
+
+  componentDidMount(){
+    Api.find('Zones',null,null)
+    .then((response) =>{
+        this.setState({zones:response.data})
+    })
+    .catch((error) =>{
+        console.log(error);
+    })
+}
   render(){
+    const ZoneList=this.state.zones;
+    const loading=this.state.loading;
+    const listZone = ZoneList.map((zone, index) => {
+        return(
+            <SingleZone  key={index}
+                id={ZoneList.id}
+                name={zone.name}
+                description={zone.description}
+                region={zone.region}
+                />
+        )
+    });
     return (
-    
       <div >
        <Card>
               <CardHeader>
@@ -21,13 +55,10 @@ class Zones extends Component {
                   </tr>
                   </thead>
                   <tbody>
-                  <tr>
-                    <td>Zone 1</td>
-                    <td>This is a description for zone 1</td>
-                    <td>Region 1</td>
-                    <td>root</td>
-                  </tr>
-                  </tbody>
+                   {loading ? <tr>
+                   <td><LoadingSpinner/></td>
+                   </tr> : listZone}
+               </tbody>
                 </Table>
                 <Pagination>
                   <PaginationItem><PaginationLink previous tag="button">Prev</PaginationLink></PaginationItem>

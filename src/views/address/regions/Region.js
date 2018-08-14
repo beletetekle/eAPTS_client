@@ -14,8 +14,8 @@ class SingleRegion extends Component{
             <a>
             {this.props.name}</a>
         </td>
-        <td>2012/01/01</td>
         <td>{this.props.description}</td>
+        <td>2012/01/01</td>
         <td>
           <ButtonGroup>
             <Button color="info" onClick={this.props.OnEdit}><Icon type="edit" /></Button>&nbsp; &nbsp;
