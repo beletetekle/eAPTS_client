@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import {Alert,Row, Col, Card, CardBody, CardHeader, FormGroup, Input, Label, Button} from 'reactstrap';
 import {AvField, AvForm, AvGroup} from "availity-reactstrap-validation";
 import Api  from '../../../services/api';
+import '../../../../node_modules/antd/dist/antd.css';
+import {Switch} from 'antd';
+
+import { message } from 'antd';
 
 class AddRegion extends Component {
 
@@ -20,7 +24,7 @@ class AddRegion extends Component {
   messageSuc = ( message )=>{
     this.setState({sucVis: true, sucMessage: message, errVis: false},
       () => setTimeout(() => {
-        this.props.history.push('/');
+        this.props.history.push('/regions/list');
       }, 2000));
   };
 
@@ -38,12 +42,12 @@ class AddRegion extends Component {
   handleValidSubmit(event, values) {
       const RegionData={
         name:values.name,
-        description: values.description,
-    }
+        description: values.description}
+
     Api.create('Regions',RegionData,null)
     .then((response) =>{
-      // this.messageSuc('Region  Created  Successfully !');
-        // todo call the alert
+      message.success('successfully Created!');
+      this.props.history.push('/regions/list');
     })
     .catch((error) =>{
       // this.messageErr('Oops! Create failed!');
@@ -79,7 +83,7 @@ class AddRegion extends Component {
                 </FormGroup>
                 <FormGroup>
                   <Label htmlFor="description">Description</Label>
-                  <AvField type="textarea" name="description" id="description" rows="9"
+                  <AvField type="textarea" name="description" id="description" rows="4"
                               placeholder="Enter region description"
                               validate={{
                                 required: {value: true, errorMessage: "Please enter Project  description"},
