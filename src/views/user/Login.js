@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom'; 
-import LoginForm from './LoginForm'
+import '../../../node_modules/antd/dist/antd.css';
+import LoginForm from './LoginForm';
+import { message } from 'antd';
 import User from '../../services/users.service'
 
 class Login extends Component {
@@ -17,14 +19,17 @@ class Login extends Component {
     const username = this.state.username;
     const password = this.state.password;
 
-    User.login(username, password)
-      .then(response => {
-        console.log(response.message);
-        this.props.history.push('/home');
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    User.login(username,password)
+    .then(response => {
+        if(response.success){
+            this.props.history.push('/home');
+        }else {
+            message.error(response.message);
+        }
+    })
+    .catch(error => {
+        message.error(error);
+    });
   }
 
   onChange = (event) => {

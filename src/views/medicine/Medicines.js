@@ -48,15 +48,15 @@ class Medicines extends Component{
         });
         return(
             <div className="animated fadeIn">
-            <Row type="flex" justify="end">
-                <Icon onClick={this.onAddMedicineForm} type="plus-circle-o" style={{fontSize: 36,float:"right"}} />
-            </Row>
                 <Row>
                     <Col xs="12" md="12">
                             
                      <Card>
                      <CardHeader>
                         <i className="fa fa-align-justify"/> Medicines
+                        <span className="float">
+                            <Icon onClick={this.onAddMedicineForm} type="plus-circle-o" style={{fontSize: 36,float:"right"}} />
+                        </span>
                     </CardHeader>
                                 <CardBody>
                                     <Table responsive hover>

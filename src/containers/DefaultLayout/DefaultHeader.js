@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem, NavLink} from 'reactstrap';
 import PropTypes from 'prop-types';
 import {AppAsideToggler, AppHeaderDropdown, AppNavbarBrand, AppSidebarToggler} from '@coreui/react';
+import User from '../../services/users.service';
+import maleDefaultImage from '../../assets/img/male.png';
 
 const propTypes = {
   children: PropTypes.node,
@@ -9,14 +11,27 @@ const propTypes = {
 
 const defaultProps = {};
 
-const DefaultHeader  = (props) => {
-
-    return (
+class DefaultHeader extends Component {
+  constructor(props){
+      super(props);
+      this.state = {
+          image : null,
+          role: null,
+          sex:""
+      }
+  }
+  
+      onLogoutHandle=()=>{
+          User.logout();
+          window.location = "#/";
+      };
+  render(){
+  return (
       <React.Fragment>
         <AppSidebarToggler className="d-lg-none" display="md" mobile />
         <AppNavbarBrand
-          full={{ src: null, width: 100, height: 25, alt: 'HMIS' }}
-          minimized={{ src: null, width: 25, height: 25, alt: 'HMIS'}}
+          full={{ src: null, width: 100, height: 25, alt: 'eAPTS' }}
+          minimized={{ src: null, width: 25, height: 25, alt: 'eAPTS'}}
         />
         <AppSidebarToggler className="d-md-down-none" display="lg" />
 
@@ -31,7 +46,7 @@ const DefaultHeader  = (props) => {
               <NavLink href="#/">Customers</NavLink>
             </NavItem>
             <NavItem className="px-3">
-              <NavLink href="#/dashboard">Cards</NavLink>
+              <NavLink href="#/bincard">Cards</NavLink>
             </NavItem>
             <NavItem className="px-3">
               <NavLink href="#/">Reports</NavLink>
@@ -49,11 +64,11 @@ const DefaultHeader  = (props) => {
         <Nav className="ml-auto" navbar>
           <AppHeaderDropdown direction="down">
             <DropdownToggle nav>
-              Test
+              <img src={maleDefaultImage} className="img-avatar"/>
             </DropdownToggle>
             <DropdownMenu right style={{ right: 'auto' }}>
-              <DropdownItem><i className="fa fa-lock"/>
-                  Test
+              <DropdownItem onClick={this.onLogoutHandle}><i className="fa fa-lock"/>
+                  Log Out
               </DropdownItem>
             </DropdownMenu>
           </AppHeaderDropdown>
@@ -61,6 +76,7 @@ const DefaultHeader  = (props) => {
         </Nav>
        </React.Fragment>
     );
+  }
 }
 
 DefaultHeader.propTypes = propTypes;

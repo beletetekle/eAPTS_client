@@ -50,7 +50,7 @@ const AddHFForm = (props) => {
                               </Col>
                             </FormGroup>
                             <FormGroup>
-                                <Input type="text" onChange={props.onChange} value={props.description} 
+                                <Input type="textarea" onChange={props.onChange} value={props.description} 
                                 name="description" placeholder="HF Description" required/>
                             </FormGroup>
                             <Button onClick={props.onClick}> Add Health Facility </Button>

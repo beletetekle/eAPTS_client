@@ -9,14 +9,16 @@ import Login from './views/user/Login';
 import Register from './views/user/Register';
 import PrivateRoute from './PrivateRoute';
 
+import style from './App.css';
+
 class App extends Component {
   render() {
     return (
       <HashRouter>
         <Switch>
           <Route path="/login" name="Home" component={Login} />
-          <Route path="/register" name="Home" component={Register} />
           <PrivateRoute path="/" name="Home" component={DefaultLayout} />
+
         </Switch>
       </HashRouter>
     );
