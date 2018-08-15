@@ -32,7 +32,8 @@ class ProductInfoContainer extends React.Component {
                 <ProductInfo
                     title="Consumable Equipment"
                     data={this.props.productInformation.consumableEquipment}
-                    onChange={this.props.addConsumableEquipment}
+                    onChange={this.props.onChange}
+                    addItem={this.props.addConsumableEquipment}
                 />
             </Row>
         );

@@ -57,47 +57,45 @@ class AddMedicine extends Component{
     }
     
     addSupply = () => {
-        let productInformation = this.state.productInformation;
-        productInformation.supply =  [...this.state.productInformation.supply, {
-            name: this.state.name,
-            strength: this.state.strength,
-            volume: this.state.volume,
-            size: this.state.size
-            }]
-        this.setState({productInformation: productInformation}, () => {console.log(this.state.productInformation.medicines)})
+        return this.addItem('supply');
     }
     
     addConsumableEquipment = () => {
-        let productInformation = this.state.productInformation;
-        productInformation.consumableEquipment =  [...this.state.productInformation.consumableEquipment, {
-            name: this.state.name,
-            strength: this.state.strength,
-            volume: this.state.volume,
-            size: this.state.size
-            }]
-        this.setState({productInformation: productInformation}, () => {console.log(this.state.productInformation.medicines)})
+        return this.addItem('consumableEquipment');
     }
     
     addReagents = () => {
-        let productInformation = this.state.productInformation;
-        productInformation.reagents =  [...this.state.productInformation.reagents, {
-            name: this.state.name,
-            strength: this.state.strength,
-            volume: this.state.volume,
-            size: this.state.size
-            }]
-        this.setState({productInformation: productInformation}, () => {console.log(this.state.productInformation.medicines)})
+        return this.addItem('reagents');
     }
 
     addMedicine = () => {
-        let productInformation = this.state.productInformation;
-        productInformation.medicines =  [...this.state.productInformation.medicines, {
-            name: this.state.name,
-            strength: this.state.strength,
-            volume: this.state.volume,
-            size: this.state.size
-            }]
-        this.setState({productInformation: productInformation}, () => {console.log(this.state.productInformation.medicines)})
+        return this.addItem('medicines');
+    }
+
+    addItem = (key) => {
+        if (this.state.name && this.state.strength && this.state.volume && this.state.size) {
+            let productInformation = this.state.productInformation;
+            productInformation[key] =  [...this.state.productInformation[key], {
+                name: this.state.name,
+                strength: this.state.strength,
+                volume: this.state.volume,
+                size: this.state.size
+                }]
+            this.setState({productInformation: productInformation},
+                          () => {console.log(this.state.productInformation.medicines)})
+            this.cleanState();
+            return true;
+        }
+        return false
+    }
+
+    cleanState = () => {
+        this.setState({
+            name: "",
+            strength: "",
+            volume: "",
+            size: ""
+        }, () => {let x = ''})
     }
     
     onChange = (event) => {
@@ -106,6 +104,23 @@ class AddMedicine extends Component{
             console.log('')
         });
     };
+
+    onCounsellingChange = (event) => {
+        const name = event.target.name;
+        let councellingInformation = this.state.councellingInformation;
+        if (name == 'drugInteraction')
+            councellingInformation.drug.drugInteraction = event.target.value;
+        else if (name == 'drugFoodInteraction')
+            councellingInformation.drug.drugFoodInteraction = event.target.value;
+        else if (name == 'drugDisease')
+            councellingInformation.drug.drugDisease = event.target.value;
+        else if (name == 'environmentInteraction')
+            councellingInformation.drug.environmentInteraction = event.target.value;
+        else 
+            councellingInformation[name] = event.target.value;
+
+        this.setState({councellingInformation: councellingInformation}, () => {console.log(this.state.councellingInformation)})
+    }
 
     handleSubmit=() =>{
         const medicineData={
@@ -116,9 +131,9 @@ class AddMedicine extends Component{
             councellingInformation: this.state.councellingInformation
         }
         console.log(medicineData);
-        Api.create('Medicine/Medicine_create',medicineData,null)
+        Api.create('Medicines',medicineData,null)
         .then((response) =>{
-            this.props.history.push('/home');
+            this.props.history.push('/medicine');
             // todo call the alert
         })
         .catch((error) =>{
@@ -143,9 +158,11 @@ class AddMedicine extends Component{
                     addMedicine={this.addMedicine}
                     addReagents={this.addReagents}
                     addConsumableEquipment={this.addConsumableEquipment}
+                    addSupply={this.addSupply}
                     medicineName={this.state.medicineName}
                     medicineCode={this.state.medicineCode}
                     medicineDescription={this.state.medicineDescription}
+                    onCounsellingChange={this.onCounsellingChange}
                 />    
             </div>
         )
