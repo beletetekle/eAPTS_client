@@ -105,6 +105,23 @@ class AddMedicine extends Component{
         });
     };
 
+    onCounsellingChange = (event) => {
+        const name = event.target.name;
+        let councellingInformation = this.state.councellingInformation;
+        if (name == 'drugInteraction')
+            councellingInformation.drug.drugInteraction = event.target.value;
+        else if (name == 'drugFoodInteraction')
+            councellingInformation.drug.drugFoodInteraction = event.target.value;
+        else if (name == 'drugDisease')
+            councellingInformation.drug.drugDisease = event.target.value;
+        else if (name == 'environmentInteraction')
+            councellingInformation.drug.environmentInteraction = event.target.value;
+        else 
+            councellingInformation[name] = event.target.value;
+
+        this.setState({councellingInformation: councellingInformation}, () => {console.log(this.state.councellingInformation)})
+    }
+
     handleSubmit=() =>{
         const medicineData={
             name:this.state.medicineName,
@@ -114,9 +131,9 @@ class AddMedicine extends Component{
             councellingInformation: this.state.councellingInformation
         }
         console.log(medicineData);
-        Api.create('Medicine/Medicine_create',medicineData,null)
+        Api.create('Medicines',medicineData,null)
         .then((response) =>{
-            this.props.history.push('/home');
+            this.props.history.push('/medicine');
             // todo call the alert
         })
         .catch((error) =>{
@@ -145,6 +162,7 @@ class AddMedicine extends Component{
                     medicineName={this.state.medicineName}
                     medicineCode={this.state.medicineCode}
                     medicineDescription={this.state.medicineDescription}
+                    onCounsellingChange={this.onCounsellingChange}
                 />    
             </div>
         )
