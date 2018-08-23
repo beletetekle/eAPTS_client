@@ -18,17 +18,36 @@ import routes from '../../routes';
 import DefaultAside from './DefaultAside';
 import DefaultFooter from './DefaultFooter';
 import DefaultHeader from './DefaultHeader';
+import ClientSession from '../../services/client-session';
+import Api from '../../services/api';
+
 
 class DefaultLayout extends Component {
   constructor(props) {
     super(props);
     this.state = {
       menu_name: 'default',
+      role: ""
     };
+    this.getCurrentUserRole();
+  }
+
+  getCurrentUserRole(){
+    ClientSession.getAuth((err, value) => {
+      if(value.internalUser.roles.length === 1)
+        Api
+          .find('roles', value.internalUser.roles[0].roleId, null)
+          .then((response) => {
+            this.setState({role: response.data.name});
+          })
+          .catch((error) => {
+            console.log(error);
+          })
+    })
   }
 
   render() {
-     var   menu_name = this.state.menu_name;
+     var   menu_name = this.state.role;
 
     return (
       <div className="app">
@@ -45,7 +64,7 @@ class DefaultLayout extends Component {
             <Container fluid>
             <Switch>
               {routes.map((route, idx) => {
-                  return route.component ? (<Route key={idx} path={route.path} exact={route.exact} name={route.name} render={props => (
+                  return route.component && (route.role === this.state.role || !route.role) ? (<Route key={idx} path={route.path} exact={route.exact} name={route.name} render={props => (
                     <route.component {...props} />
                   )} />) : (null);
                 },

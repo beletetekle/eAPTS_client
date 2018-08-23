@@ -181,37 +181,67 @@ const Register = Loadable({
 })
 
 // https://github.com/ReactTraining/react-router/tree/master/packages/react-router-config
+
+//No role means route can be accessed by anyone with any role
 const routes = [
   { path: '/home', exact: true, name: 'Home', component: Home},
-  { path: '/register', exact: true, name: 'Register', component: Register},
   { path: '/about', exact: true, name: 'About', component: About},
-  { path: '/regions', exact: true, name: 'Regions', component: Regions},
-  { path: '/regions/list', name: 'Regions', component: Regions},
-  { path: '/regions/add', name: 'Add Region', component: AddRegion},
-  { path: '/zones', exact: true, name: 'Zones', component: Zones},
-  { path: '/zones/list', name: 'Zones', component: Zones},
-  { path: '/zones/add', name: 'Add Zone', component: AddZone},
-  { path: '/woredas', exact: true, name: 'Woredas', component: Woredas},
-  { path: '/woredas/list', name: 'Woredas', component: Woredas},
-  { path: '/woredas/add', name: 'Add Woreda', component: AddWoreda},
-  { path: '/health-institutes', exact: true, name: 'Health Institutes', component: HealthInstitutes},
-  { path: '/health-institutes/list', name: 'Health Institutes', component: HealthInstitutes},
-  { path: '/health-institutes/add', name: 'Add Health Institute', component: AddHealthInstitute},
-  { path: '/health-institutes/categories', exact: true, name: 'Health Institute Categories', component: HealthInstituteCategories},
-  { path: '/health-institutes/categories/list', name: 'Health Institute Categories', component: HealthInstituteCategories},
-  { path: '/health-institutes/categories/add', name: 'Add Health Institute Category', component: AddHealthInstituteCategory},
+  
   { path: '/accounts', exact: true, name: 'Accounts', component: Accounts},
+  { path: '/register', exact: true, name: 'Register', component: Register},
+
+  { path: '/regions', exact: true, name: 'Regions', component: Regions, role:"super-admin"},
+
+  { path: '/regions/list', name: 'Regions', component: Regions, role:"super-admin"},
+  { path: '/regions/list', name: 'Regions', component: Regions, role:"region-admin"},
+  
+  { path: '/regions/add', name: 'Add Region', component: AddRegion, role:"super-admin"},
+  { path: '/regions/add', name: 'Add Region', component: AddRegion, role:"region-admin"},
+  
+  { path: '/zones', exact: true, name: 'Zones', component: Zones, role:"super-admin"},
+  { path: '/zones', exact: true, name: 'Zones', component: Zones, role:"region-admin"},
+  
+  { path: '/zones/list', name: 'Zones', component: Zones, role:"super-admin"},
+  { path: '/zones/list', name: 'Zones', component: Zones, role:"zone-admin"},
+  
+  { path: '/zones/add', name: 'Add Zone', component: AddZone, role:"super-admin"},
+  { path: '/zones/add', name: 'Add Zone', component: AddZone, role:"zone-admin"},
+
+  { path: '/woredas', exact: true, name: 'Woredas', component: Woredas, role:"super-admin"},
+  { path: '/woredas/list', name: 'Woredas', component: Woredas, role:"super-admin"},
+  { path: '/woredas/add', name: 'Add Woreda', component: AddWoreda, role:"super-admin"},
+
+  { path: '/woredas', exact: true, name: 'Woredas', component: Woredas, role:"woreda-admin"},
+  { path: '/woredas/list', name: 'Woredas', component: Woredas, role:"woreda-admin"},
+  { path: '/woredas/add', name: 'Add Woreda', component: AddWoreda, role:"woreda-admin"},
+
+  { path: '/health-institutes', exact: true, name: 'Health Institutes', component: HealthInstitutes, role:"super-admin"},
+  { path: '/health-institutes/list', name: 'Health Institutes', component: HealthInstitutes, role:"super-admin"},
+  { path: '/health-institutes/add', name: 'Add Health Institute', component: AddHealthInstitute, role:"super-admin"},
+  { path: '/health-institutes/categories', exact: true, name: 'Health Institute Categories', component: HealthInstituteCategories, role:"super-admin"},
+  { path: '/health-institutes/categories/list', name: 'Health Institute Categories', component: HealthInstituteCategories, role:"super-admin"},
+  { path: '/health-institutes/categories/add', name: 'Add Health Institute Category', component: AddHealthInstituteCategory, role:"super-admin"},
+
+  { path: '/health-institutes', exact: true, name: 'Health Institutes', component: HealthInstitutes, role:"health-admin"},
+  { path: '/health-institutes/list', name: 'Health Institutes', component: HealthInstitutes, role:"health-admin"},
+  { path: '/health-institutes/add', name: 'Add Health Institute', component: AddHealthInstitute, role:"health-admin"},
+  { path: '/health-institutes/categories', exact: true, name: 'Health Institute Categories', component: HealthInstituteCategories, role:"health-admin"},
+  { path: '/health-institutes/categories/list', name: 'Health Institute Categories', component: HealthInstituteCategories, role:"health-admin"},
+  { path: '/health-institutes/categories/add', name: 'Add Health Institute Category', component: AddHealthInstituteCategory, role:"health-admin"},
+
+
   { path: '/departments', exact: true, name: 'Departments', component: Departments},
   { path: '/departments/list', name: 'Departments', component: Departments},
   { path: '/departments/add', name: 'Add Department', component: AddDepartment},
+
   { path : '/medicine',exact:true ,name:'Medicines',component:Medicine},
   { path : '/new-medicine',exact:true ,name:'Medicines',component:AddMedicine},
+
   { path : '/HF',exact:true ,name:'HealthFacility',component:HealthFacility},
   { path : '/HF/new',exact:true ,name:'Add Health Facility',component:AddHF},
-  { path : '/ImporterAndSupplier',exact:true ,name:'ImporterAndSupplier',component:ImporterAndSupplier},
+    
   { path : '/Patients',exact:true ,name:'Patients',component:Patients},
   { path : '/Patients/add',exact:true ,name:'New Patient',component:AddPatient},
-  
   { path: '/patient-type', exact: true, name: 'Patient Type', component: PatientType},
   { path: '/patient-type/list', name: 'Patient Type', component: PatientType},
   { path: '/patient-type/add', name: 'Add Patient Type', component: AddPatientType},

@@ -1,4 +1,4 @@
-const SampleSideNav = {
+const superAdmin = {
   items: [
     {
       name: 'Home',
@@ -210,7 +210,125 @@ const SampleSideNav = {
     },
   ]
 }
+const regionAdmin = {
+  items: [
+    {
+      name: 'Home',
+      icon: 'icon-home',
+      url: '/home'
+    },
+    {
+      name : "Regions",
+      icon : 'icon-list',
+      url: '/regions',
+      children: [
+        {
+          name : "List",
+          icon : 'icon-list',
+          url : '/regions/list',
+        },
+        {
+          name : "Add",
+          icon : 'icon-plus',
+          url : '/regions/add',
+        },
+      ]
+    }
+  ]
+}
 
-const navigation = {'default': SampleSideNav };
+const zoneAdmin = {
+  items: [
+    {
+      name : "Zones",
+      icon : 'icon-list',
+      url: '/zones',
+      children: [
+        {
+          name : "List",
+          icon : 'icon-list',
+          url : '/zones/list',
+        },
+        {
+          name : "Add",
+          icon : 'icon-plus',
+          url : '/zones/add',
+        },
+      ]
+    }
+  ]
+}
+
+const woredaAdmin = {
+  items: [
+    {
+      name : "Woredas",
+      icon : 'icon-list',
+      url: '/woredas',
+      children: [
+        {
+          name : "List",
+          icon : 'icon-list',
+          url : '/woredas/list',
+        },
+        {
+          name : "Add",
+          icon : 'icon-plus',
+          url : '/woredas/add',
+        },
+      ]
+    }
+  ]
+}
+
+
+const HFAdmin = {
+  items: [
+    {
+      name : "Health Institutes",
+      icon : 'icon-list',
+      url: '/health-institutes',
+      children: [
+
+        {
+          name : "List",
+          icon : 'icon-list',
+          url : '/health-institutes/list',
+        },
+        {
+          name : "Add",
+          icon : 'icon-plus',
+          url : '/health-institutes/add',
+        },
+        {
+          name : "Categories",
+          icon : 'icon-list',
+          url : '/health-institutes/categories',
+          children: [
+            {
+              name : "List",
+              icon : 'icon-list',
+              url : '/health-institutes/categories/list',
+            },
+            {
+              name : "Add",
+              icon : 'icon-plus',
+              url : '/health-institutes/categories/add',
+            },
+          ]
+        }
+      ]
+    }
+  ]
+}
+
+
+const storeAdmin = {
+  items: [
+
+  ]
+}
+const navigation = {'super-admin': superAdmin, 'region-admin': regionAdmin, 'zone-admin': zoneAdmin, 'woreda-admin':woredaAdmin, 'health-admin':HFAdmin, 'store-admin': storeAdmin };
+
 
 export default navigation;
