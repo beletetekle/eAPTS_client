@@ -128,6 +128,7 @@ class AddDiagnostic extends Component {
                   <Label htmlFor="symptom">Symptoms</Label>
                   <ReactTags 
                     inline
+                    placeholder={"Add Symptom separated by ','"}
                     tags={tags}
                     suggestions={suggestions}
                     handleDelete={this.handleDelete}

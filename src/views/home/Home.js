@@ -5,9 +5,9 @@ class Home extends Component {
     return (
     
       <div className="jumbotron">
-        <h1>Home</h1>
-        <p> Hello World!</p>
-        <Link to="/about" className="btn btn-primary btn-lg">More...</Link>
+        <h1>eAPTS Ethiopia </h1>
+        <p> Reporting Section </p>
+        <Link to="/about" className="btn btn-primary btn-lg">Comming Soon ...</Link>
       </div>
     );
   }
